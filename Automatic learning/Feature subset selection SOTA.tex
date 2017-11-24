@@ -52,7 +52,8 @@ Para atacar este problema se distinguen tres puntos de vista diferentes en base 
 
 \begin{itemize}
  
-\item Si la selección de este subconjunto está basada en la precisión predictiva de nuestro algoritmo de aprendizaje
+\item Si la selección de este subconjunto está basada en la precisión predictiva de nuestro algoritmo de aprendizaje resultante, entonces nos encontramos ante un método wrapper. En este caso, las variables van siendo tenidas en cuenta en el modelo si mejoran su capacidad predictiva. El modelo es usado como una caja negra para ver su capacidad predictiva. 
+Los algoritmos wrapper (\cite{kohavi1997}) son bastante eficaces en cuanto a precisión del modelo resultante, sin embargo sufren de una carga computacional muy elevada que los hace inabarcables en datasets con un conjunto muy grande de variables.
 \item filter
 \item embeded \ldots 
 \end{itemize} 
@@ -77,14 +78,6 @@ What are the main open lines for research.
 \bibliographystyle{plainnat}
 \begin{thebibliography}{}
 
-\bibitem[Hosmer and Lemeshow, 2000]{hosmer-lemeshow2000}
-Hosmer, D.W. and Lemeshow, S. (2000) \textit{Applied Logistic Regression}. 2nd edn, J. Wiley and Sons, New York.
-
-\bibitem[Shakhnarovich \textit{et al.}, 2001]{shakhnarovich2001icml}
-Shakhnarovich, G., El-Yaniv, R. and Baram, Y. (2001) Smoothed bootstrap and statistical data cloning for classifier
-evaluation. In \textit{Proceedings of the 18th International Conference on Machine Learning (ICML)}, Williamstown, MA, USA, Morgan Kaufmann, pp.
-521--528.
-
 \bibitem[Uncu and T\"urksen, 2007]{uncu2007}
 Uncu, O. and T\"urksen, I.B. (2007) A novel feature selection
 approach: Combining feature wrappers and filters. \textit{Information Sciences}, 177, 449--466.
@@ -92,11 +85,12 @@ approach: Combining feature wrappers and filters. \textit{Information Sciences},
 \bibitem[H. Liu X. \textit{et al.}, 2011]{hliu2011}
 H. Liu, X. Wu, and S. Zhang, "Feature selection using hierarchical feature clustering", in \textit{Proc. ACM Int. Conf. Inform. Knowl. Manage.}, New York, NY, USA, 2011.
 
-\bibitem[Wold, 1975]{wold75} Wold, H. (1975) Soft modelling by latent variables: The non-linear iterative partial least squares ({NIPALS})
-approach. In Gani, J. (ed), \textit{Perspectives in Probability and Statistics}, Academic Press, London, pp. 117--142.
-
 \bibitem[A.A. Albrecht, 1982]{albrecht1982}
 A.A. Albrecht, Stochastic local search for the feature set problem, with applications to microarray data, Applied Mathematics and Computation 183 (2006) 1148–1164
+
+\bibitem[Kohavi and John, 1997]{kohavi1997}
+R. Kohavi and G. John. Wrappers for feature selection. \textit{Artificial Intelligence}, 97(1-2):273–324,
+December 1997.
 
 \end{thebibliography}
 
