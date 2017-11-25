@@ -54,11 +54,14 @@ Para atacar este problema se distinguen tres puntos de vista diferentes en base 
  
 \item Si la selección de este subconjunto está basada en la precisión predictiva de nuestro algoritmo de aprendizaje resultante, entonces nos encontramos ante un método wrapper. En este caso, las variables van siendo tenidas en cuenta en el modelo si mejoran su capacidad predictiva. El modelo es usado como una caja negra para ver su capacidad predictiva. 
 Los algoritmos wrapper (\cite{kohavi1997}) son bastante eficaces en cuanto a precisión del modelo resultante, sin embargo sufren de una carga computacional muy elevada que los hace inabarcables en datasets con un conjunto muy grande de variables.
-\item filter
-\item embeded \ldots 
+\item Si la selección del subconjunto es independiente del algoritmo de aprendizaje usado después, entonces hablamos de un método de filtrado o filter. Estos métodos se basan en medidas matemáticas como la información mutua o el coeficiente de correlación de Pearson para relacionar unas variables con otras y medir su relevancia (\cite{gheyas2009}). Estos métodos no son muy costosos computacionalmente comparados con los métodos wrapper y no están ligados al algoritmo de aprendizaje usado después, sin embargo no garantizan la precisión del modelo final (\cite{fast}).
+\item Si se usa la selección de variables como parte del algoritmo de aprendizaje, entonces se habla de métodos embebidos o embedded. Ejemplos clásicos de estos métodos son los árboles de decisión o las redes neuronales (\cite{breiman1984}).  
+\item También existen los llamados métodos híbridos, que combinan la rapidez de los métodos de filtrado con los buenos resultados de los métodos wrapper (\cite{uncu2007}).
 \end{itemize} 
 
+Este problema es también dividido a veces en supervisado, si tenemos algunas etiquetas que indiquen qué variables son útiles, o no supervisado, si no tenemos ninguna indicación de la utilidad de las variables (\cite{li2014}).
 
+En este estado del arte nos centraremos en los métodos de filtrado. El resto del documento se organiza en la sección 2, donde se repasan distintos métodos de filtrado y las técnicas que se utilizan, y la sección 3, donde se habla de las líneas de investigación abiertas en este ámbito.
 
 \section{State-of-the-art}
 
@@ -91,6 +94,20 @@ A.A. Albrecht, Stochastic local search for the feature set problem, with applica
 \bibitem[Kohavi and John, 1997]{kohavi1997}
 R. Kohavi and G. John. Wrappers for feature selection. \textit{Artificial Intelligence}, 97(1-2):273–324,
 December 1997.
+
+\bibitem[Gheyas and Smith, 2009]{gheyas2009}
+I.A. Gheyas, L.S. Smith, Feature subset selection in large dimensionality domains, Pattern Recognition (2009), doi:
+10.1016/j.patcog.2009.06.009.
+
+\bibitem[Song \textit{el al.}, 2013]{fast}
+Qinbao Song, Jingjie Ni and Guangtao Wang, A fast clustering-based feature subset selection algorithm for high dimensional data. \textit{IEEE TRANSACTIONS ON KNOWLEDGE AND DATA ENGINEERING VOL:25 NO:1} year 2013.
+
+\bibitem[Breiman \textit{el al.}, 1984]{breiman1984}
+L. Breiman, J. H. Friedman, R. A. Olshen, and C. J. Stone. Classification and Regression Trees. Wadsworth and Brooks, 1984.
+
+\bibitem[Li \textit{el al.}, 2014]{li2014}
+Zechao Li, Jing Liu, Yi Yang, Xiaofang Zhou,and Hanqing Lu, Clustering-guided sparse structural learning
+for unsupervised feature selection. \textit{IEEE TRANSACTIONS ON KNOWLEDGE AND DATA ENGINEERING VOL:26 NO:9} September 2014.
 
 \end{thebibliography}
 
