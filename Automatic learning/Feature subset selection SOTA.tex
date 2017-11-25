@@ -65,7 +65,14 @@ En este estado del arte nos centraremos en los métodos de filtrado. El resto de
 
 \section{State-of-the-art}
 
-Las variables que buscamos obtener en nuestro subconjunto deben ser relevantes y no redundantes entre sí. Dependiendo de si un algoritmo distingue por un tipo o por ambos aparecen distintos tipos de filtering.
+Al elegir un subconjunto de variables, tenemos que fijarnos en que estas sean relevantes y no redundantes entre sí. Una variable es relevante cuando ayuda a discernir más la clase de una instancia que otra variable, y es redundate cuando aporta la misma información sobre la clase a la que se pertenece que otra variable. (\cite{fast})
+Que una variable no sea relevante provoca empeoramientos en la precisión de nuestro algoritmo de aprendizaje (\cite{john1994}), y la redundancia entre variables provoca deterioros en el rendimiento de nuestro modelo, por lo que conviene evitar ambos casos.
+
+Los primeros métodos que aparecieron para el filtrado se centraban en encontrar variables relevantes para el modelo, uno de los ejemplos más clásicos es el algoritmo \textit{Relief} (\cite{kira1992}). \textit{Relief} discrimina unas variables de otras dependiendo de lo bien que diferencian la clase según un criterio basado en análisis estadístico de la distancia. 
+
+Como primera aproximación, es un buen modo de reducir en parte la dimensionalidad del conjunto de variables, pero este algoritmo no comprueba que las variables que selecciona estén muy correlacionadas entre sí, por lo que puede seleccionar variables redundantes entre sí que no ayuden a mejorar la precisión del modelo y sin embargo dejar fuera variables que por sí mismas no están muy correlacionadas con la clase pero que aportan más información en conjunto con las que tenemos.
+
+Para solventar el problema de la redundancia entre variables se crean nuevos algoritmos como \textit{CFS} y \textit{FCBF} que emplean medidas como la información mutua y la incertidumbre simétrica para comprobar la redundancia entre variables \cite{yu2004}
 
     \subsection{More specific}
 
@@ -86,7 +93,7 @@ Uncu, O. and T\"urksen, I.B. (2007) A novel feature selection
 approach: Combining feature wrappers and filters. \textit{Information Sciences}, 177, 449--466.
 
 \bibitem[H. Liu X. \textit{et al.}, 2011]{hliu2011}
-H. Liu, X. Wu, and S. Zhang, "Feature selection using hierarchical feature clustering", in \textit{Proc. ACM Int. Conf. Inform. Knowl. Manage.}, New York, NY, USA, 2011.
+H. Liu, X. Wu, and S. Zhang, Feature selection using hierarchical feature clustering, in \textit{Proc. ACM Int. Conf. Inform. Knowl. Manage.}, New York, NY, USA, 2011.
 
 \bibitem[A.A. Albrecht, 1982]{albrecht1982}
 A.A. Albrecht, Stochastic local search for the feature set problem, with applications to microarray data, Applied Mathematics and Computation 183 (2006) 1148–1164
@@ -108,6 +115,17 @@ L. Breiman, J. H. Friedman, R. A. Olshen, and C. J. Stone. Classification and Re
 \bibitem[Li \textit{el al.}, 2014]{li2014}
 Zechao Li, Jing Liu, Yi Yang, Xiaofang Zhou,and Hanqing Lu, Clustering-guided sparse structural learning
 for unsupervised feature selection. \textit{IEEE TRANSACTIONS ON KNOWLEDGE AND DATA ENGINEERING VOL:26 NO:9} September 2014.
+
+\bibitem[John Kohavi and Pfleger, 1994]{john1994}
+John G.H., Kohavi R. and Pfleger K., Irrelevant Features and the Subset Selection Problem, In the Proceedings of the Eleventh International Conference on Machine Learning, pp 121-129, 1994.
+
+\bibitem[Kira and Rendell, 1992]{kira1992}
+Kenji Kira, Larry A. Rendell. A practical approach to feature selection, 1992.
+
+\bibitem[Yu and Liu, 2004]{yu2004}
+L. Yu, H. Liu, Efficient Feature Selection via Analysis
+of Relevance and Redundancy. Journal of Machine
+Learning Research 5: 1205-1224, 2004.
 
 \end{thebibliography}
 
