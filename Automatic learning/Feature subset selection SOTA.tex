@@ -68,18 +68,19 @@ En este estado del arte nos centraremos en los métodos de filtrado. El resto de
 Al elegir un subconjunto de variables, tenemos que fijarnos en que estas sean relevantes y no redundantes entre sí. Una variable es relevante cuando ayuda a discernir más la clase de una instancia que otra variable, y es redundate cuando aporta la misma información sobre la clase a la que se pertenece que otra variable. (\cite{fast})
 Que una variable no sea relevante provoca empeoramientos en la precisión de nuestro algoritmo de aprendizaje (\cite{john1994}), y la redundancia entre variables provoca deterioros en el rendimiento de nuestro modelo, por lo que conviene evitar ambos casos.
 
-Los primeros métodos que aparecieron para el filtrado se centraban en encontrar variables relevantes para el modelo, uno de los ejemplos más clásicos es el algoritmo \textit{Relief} (\cite{kira1992}). \textit{Relief} discrimina unas variables de otras dependiendo de lo bien que diferencian la clase según un criterio basado en análisis estadístico de la distancia. 
+Los primeros métodos que aparecieron para el filtrado se centraban en encontrar variables relevantes para el modelo, uno de los ejemplos más clásicos es el algoritmo \textit{Relief} (\cite{kira1992}). \textit{Relief} discrimina unas variables de otras dependiendo de lo bien que diferencian la clase según un criterio basado en análisis estadístico de la distancia. También aparece el concepto de Markov blanket de las variables para medir su relevancia en presencia de otras variables (\cite{mitra2002}). 
 
 Como primera aproximación, es un buen modo de reducir en parte la dimensionalidad del conjunto de variables, pero este algoritmo no comprueba que las variables que selecciona estén muy correlacionadas entre sí, por lo que puede seleccionar variables redundantes entre sí que no ayuden a mejorar la precisión del modelo y sin embargo dejar fuera variables que por sí mismas no están muy correlacionadas con la clase pero que aportan más información en conjunto con las que tenemos.
 
-Para solventar el problema de la redundancia entre variables se crean nuevos algoritmos como \textit{CFS} y \textit{FCBF} que emplean medidas como la información mutua y la incertidumbre simétrica para comprobar la redundancia entre variables \cite{yu2004}
+Para solventar el problema de la redundancia entre variables se crean nuevos algoritmos como \textit{CFS} y \textit{FCBF} que emplean medidas como la información mutua y la incertidumbre simétrica para comprobar la redundancia entre variables (\cite{yu2004}). Estos métodos son bien conocidos y referenciados a la hora de presentar un nuevo algoritmo y probar su rendimiento.
 
-    \subsection{More specific}
+En este punto donde ya se tienen medidas para calcular la relevancia y la redundancia de una variable aparecen nuevas formas no supervisadas de aplicar esta medida por medio del clustering de variables. 
 
+\subsection{Filtrado por clustering}
 
-Perhaps some subsections are needed.
+Los primeros problemas a los que se intentó aplicar esta aproximación son la clasificación de textos por medio de clustering jerárquico (\cite{dhillon2003}) y los microarrays de ADN (\cite{yu2004}). 
 
-\section{Conclusions and future research}
+\section{Conclusiones y trabajo futuro}
 
 What are the main open lines for research.
 
@@ -126,6 +127,18 @@ Kenji Kira, Larry A. Rendell. A practical approach to feature selection, 1992.
 L. Yu, H. Liu, Efficient Feature Selection via Analysis
 of Relevance and Redundancy. Journal of Machine
 Learning Research 5: 1205-1224, 2004.
+
+\bibitem[Dhillon \textit{et. al}, 2003]{dhillon2003}
+Dhillon I.S., Mallela S. and Kumar R., A divisive information theoretic feature clustering algorithm for text classification, J. Mach. Learn. Res., 3,pp 1265-1287, 2003.
+
+\bibitem[Xing \textit{et. al}, 2001]{xing2001}
+Xing E., Jordan M. and Karp R., Feature selection for high-dimensional genomic microarray data, In Proceedings of the Eighteenth International Conference on Machine Learning, pp 601-608, 2001.
+
+\bibitem[Mitra \textit{et. al}, 2002]{mitra2002}
+P. Mitra, C. A. Murthy, and S. K. Pal. Unsupervised feature selection using feature similarity. IEEE Transactions on Pattern Analysis and Machine Intelligence, 24(3):301–312, 2002
+
+\bibitem[Yiu and Hong, 2012]{yiu2012}
+Yiu-ming Cheung and Hong Jia, Unsupervised Feature Selection with Feature Clustering. \textit{2012 IEEE/WIC/ACM International Conferences on Web Intelligence and Intelligent Agent Technology}
 
 \end{thebibliography}
 
