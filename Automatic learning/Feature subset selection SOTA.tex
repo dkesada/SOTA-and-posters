@@ -32,7 +32,7 @@
 
 %\address{}
 
-\begin{abstract} La selección del subconjunto de variables es el proceso de encontrar un subconjunto de las variables originales que genere los mejores resultados comparado con todo el conjunto de variables en términos de la eficiencia y la efectividad. Los métodos de selección del subconjunto de variables están divididos en tres categorías dependiendo del criterio de evaluación: métodos filter, wrapper o embebidos. En este estado del arte, revisaremos por encima estas tres variantes y nos centraremos en los métodos de filtrado que utilizan clustering.
+\begin{abstract} La selección del subconjunto de variables es el proceso de encontrar un subconjunto de las variables originales que genere los mejores resultados comparado con todo el conjunto de variables en términos de la eficiencia y la efectividad. Los métodos de selección del subconjunto de variables están divididos en tres categorías dependiendo del criterio de evaluación: métodos filter, wrapper o embebidos. En este estado del arte, revisaremos por encima estas tres variantes y nos centraremos en los métodos de filtrado, haciendo especial mención de aquellos que utilizan clustering.
 \end{abstract}
 
 
@@ -78,11 +78,21 @@ En este punto donde ya se tienen medidas para calcular la relevancia y la redund
 
 \subsection{Filtrado por clustering}
 
-Los primeros problemas a los que se intentó aplicar esta aproximación son la clasificación de textos por medio de clustering jerárquico (\cite{dhillon2003}) y los microarrays de ADN (\cite{yu2004}). 
+Los primeros problemas a los que se intentó aplicar esta aproximación son la clasificación de textos por medio de clustering jerárquico (\cite{dhillon2003}) y los microarrays de ADN (\cite{yu2004}). En ambos casos, la dimensionalidad de las variables es muy alta y en el caso de los microarrays no se tienen muchas instancias del problema.
 
-\section{Conclusiones y trabajo futuro}
+A raíz de los buenos resultados obtenidos, se continúa investigando la rama del clustering en sus diferentes variantes como solución a este problema. Hay investigadores que se centran en el clustering jerárquico o aglomerativo clásico y en encontrar medidas más efectivas para la distancia entre clusters de variables y la forma de unir estos, como el el caso del algoritmo \textit{FSFC} (\cite{hliu2011}) y más recientemente el algoritmo de \cite{dehghan2016}.
 
-What are the main open lines for research.
+Hay otros investigadores que prefieren buscar resultados mejores en el clustering particional en vez del jerárquico y tratan de encontrar medidas adecuadas para ver la similitud de las variables que se encuentran en un mismo cluster o partición, como en el caso de \textit{RPCCL} (\cite{yiu2012}).
+
+Otra rama de investigación se centra en nuevos métodos para realizar el cluster de variables, como en el caso del algoritmo \textit{FAST} (\cite{fast}) donde usan un \textit{minimum-spannin tree} para hacer el clustering y seleccionar el subconjunto de variables particionando este árbol.
+
+\section{Conclusiones y ramas de investigación abiertas}
+
+El uso del clustering para la selección del subconjunto de variables es un método que resulta muy eficaz para seleccionar variables relevantes y no redundantes. Aplicar clustering evita el sobreajuste y como método de filtrado es bastante eficiente.
+
+En este momento, la investigación en este área se centra en la obtención de nuevas medidas de la distancia basadas en la redundancia y la relevancia de las variables, así como en la obtención de nuevos métodos de clustering de variables.
+
+Sería interesante intentar aplicar el clustering probabilístico a este problema, dado que los otros dos tipos de clustering clásicos ya han sido probados. También parece ser una buena rama el uso de métodos híbridos de filtrado y de wrapper, por lo que aplicar en conjunto alguno de los algoritmos de clustering vistos con métodos wrapper podría obtener bastantes buenos resultados.
 
 
 
@@ -140,6 +150,8 @@ P. Mitra, C. A. Murthy, and S. K. Pal. Unsupervised feature selection using feat
 \bibitem[Yiu and Hong, 2012]{yiu2012}
 Yiu-ming Cheung and Hong Jia, Unsupervised Feature Selection with Feature Clustering. \textit{2012 IEEE/WIC/ACM International Conferences on Web Intelligence and Intelligent Agent Technology}
 
+\bibitem[Dehghan and Mansoori, 2016]{dehghan2016}
+Dehghan Z. , Mansoori E.G., A new feature subset selection using bottom-up clustering. Pattern Anal Applic (2016). https://doi.org/10.1007/s10044-016-0565-8
 \end{thebibliography}
 
 
