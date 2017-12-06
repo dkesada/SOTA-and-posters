@@ -65,7 +65,12 @@ El estudio de los sesgos se inició con \cite{tversky1974}, donde se identificó
 Los sesgos cognitivos son los que se tratan de manera más extensa en la literatura. El grado en el que afectan a la toma de decisiones es muy variable, pero los métodos de \textit{debiasing} para afrontarlos han sido probados con los años. Algunos de los más relevantes son:
 
 \begin{itemize}
-\item El exceso de seguridad o \textit{overconfidence} ()
+\item El \textbf{exceso de seguridad} o \textit{overconfidence} (\cite{moore2008}). Este sesgo ocurre cuando el decisor sobreestima su capacidad para estimar valores o cuando las estimaciones que hace son con demasiada precisión. En el primer caso, el decisor les da mayor peso del que realmente tienen a esos valores. En el segundo caso, a la hora de estimar un valor el decisor no se saldrá de un intervalo muy reducido, creyendo excesivamente que la aproximación tiene que pertenecer a ese intervalo y no contemplando los casos en los que eso no ocurra. 
+Este es uno de los sesgos que más se ha estudiado en la literatura y cuyos efectos son más severos a la hora de la toma de decisiones, generando decisiones erróneas basándose en información incorrecta sobre la capacidad predictiva propia. Por esto, los métodos de \textit{debiasing} para resolverlo pasan por aportar información sobre la calidad predictora para que tengan menos peso las propias estimaciones, o por proponer casos de valores extremos, para que el decisor compruebe si estos valores fuera del intervalo son viables o no.
+
+\item El \textbf{anclaje}. Esto ocurre cuando hay una gran influencia en los decisores para hacer estimaciones cercanas a un valor inicial proporcionado (\cite{chapman2002}). En la práctica, cuando no se tiene una idea clara de qué valor puede tomar una variable y se nos proporciona un posible valor para ella, se tiende a aproximar ese valor a algo cercano a este ancla, pensando que ese es el valor correcto. El anclado puede ser beneficioso si este ancla es un valor fiable, pero si este valor es arbitrario o no muy seguro estaremos incurriendo en errores de decisión severos. Para prevenir un anclaje erróneo, la práctica más común es dar varias anclas en valores extremos opuestos, para que el decisor no de tanta relevancia al ancla inicial y pueda explorar valores intermedios.
+
+\item La \textbf{facilidad de recordar}. 
 \end{itemize}
 
 \subsection{Sesgos motivacionales}
@@ -73,12 +78,17 @@ Los sesgos cognitivos son los que se tratan de manera más extensa en la literat
 
 \section{Conclusiones y líneas de investigación abiertas}
 
-What are the main open lines for research.
+El estudio de los sesgos ayuda en gran medida a obtener una mejor calidad en la toma de decisiones. Conocer diferentes tipos de sesgos y maneras de corregirlos ayuda a prevenir errores a la hora de modelar los decisores. Sin embargo, muchas de las técnicas de \textit{debiasing} son puramente heurísticas y no está demostrado su funcionamiento.
+
+En este área, la línea de investigación más antigua y prolífera se centra en el descubrimiento de sesgos y la demostración de sus efectos de manera empírica. Recientemente, el estudio de los sesgos se ha centrado más en recopilar todos los ya conocidos más que en encontrar nuevos. Otra línea de investigación poco explorada es la demostración empírica del funcionamiento de las técnicas de \textit{debiasing}, como en el caso de investigaciones recientes como la de \cite{montibeller2015}.
 
 
 
 \bibliographystyle{plainnat}
 \begin{thebibliography}{}
+
+\bibitem[Chapman and Johnson, 2002]{chapman2002}
+Chapman G. B., Johnson, E. J. (2002). Incorporating the irrelevant: Anchors in judgments of belief and value. Heuristics and biases: The psychology of intuitive judgment, 120-138.
 
 \bibitem[Kerr and Tindale, 2004]{kerr2004}
 Kerr NL, Tindale RS (2004) Group performance and decision making. Annu Rev Psychol 55:623–655. doi:10.1146/annurev.psych.55.090902.142009
@@ -86,8 +96,8 @@ Kerr NL, Tindale RS (2004) Group performance and decision making. Annu Rev Psych
 \bibitem[Kunda, 1990]{kunda1990}
 Kunda Z (1990) The case for motivated reasoning. Psychol Bull 108:480–498. doi:10.1037/0033-2909.108.3.480
 
-\bibitem[Montibeller and von Winterfeldt, 2018]{montibeller2018}
-Montibeller G., von Winterfeldt D. (2018) Individual and Group Biases in Value and Uncertainty Judgments. In: Dias L., Morton A., Quigley J. (eds) Elicitation. International Series in Operations Research \& Management Science, vol 261. Springer, Cham
+\bibitem[Montibeller and von Winterfeldt, 2015]{montibeller2015}
+Montibeller G., von Winterfeldt D. (2015). Biases and debiasing in multi-criteria decision analysis. In System Sciences (HICSS), 2015 48th Hawaii International Conference on (pp. 1218-1226). IEEE.
 
 \bibitem[Toet \textit{et al.}, 2016]{toet2016}
 Toet A., Anne-Marie Brouwer, Karel van den Bosch, J.E. (Hans) Korteling (2016) Effects of personal characteristics on susceptibility to decision bias: a literature study. International Journal of Humanities and Social Sciences \textit{Vol. 8 No. 5, pp. 1-17}
