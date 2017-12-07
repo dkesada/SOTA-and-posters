@@ -70,15 +70,25 @@ Este es uno de los sesgos que más se ha estudiado en la literatura y cuyos efec
 
 \item El \textbf{anclaje}. Esto ocurre cuando hay una gran influencia en los decisores para hacer estimaciones cercanas a un valor inicial proporcionado (\cite{chapman2002}). En la práctica, cuando no se tiene una idea clara de qué valor puede tomar una variable y se nos proporciona un posible valor para ella, se tiende a aproximar ese valor a algo cercano a este ancla, pensando que ese es el valor correcto. El anclado puede ser beneficioso si este ancla es un valor fiable, pero si este valor es arbitrario o no muy seguro estaremos incurriendo en errores de decisión severos. Para prevenir un anclaje erróneo, la práctica más común es dar varias anclas en valores extremos opuestos, para que el decisor no de tanta relevancia al ancla inicial y pueda explorar valores intermedios.
 
-\item La \textbf{facilidad de recordar}. 
+\item La \textbf{facilidad de recordar}. Este sesgo hace que los expertos estimen la probabilidad de ocurrencia de un suceso en base a lo fácil que es de recordar un caso concreto. Esto hace que sucesos que son fáciles de recordar se les estime erróneamente como más probables (\cite{buon2008}). Para evitar este sesgo hay que proporcionar al decisor contraejemplos de casos en los que no es tan probable el suceso a estimar, o si se tienen estadísticas sobre su ocurrencia.
+
 \end{itemize}
 
+(Más o lista resumida)
 \subsection{Sesgos motivacionales}
+Los sesgos motivacionales no han sido tan estudiados en la literatura, pero su efecto es tan relevante como el de los cognitivos. Son en general más complicados de resolver, y quien los comete no tiene por qué ser consciente de su inclinación hacia ellos. Algunos de los más conocidos son:
 
+\begin{itemize}
+
+\item El sesgo de \textbf{confirmación}. Ocurre cuando un experto busca confirmar una idea previa que tiene, esquivando activamente argumentos en contra y buscando argumentos a favor, siendo selectivo con la información usada (\cite{correia2011}). Para atenuar este sesgo, se puede confrontar la opinion de dos expertos con diferentes puntos de vista, para que argumentos a favor y en contra estén presentes, o se puede tratar de pedir al experto que explique los puntos a favor y en contra de su razonamiento, para que se fuerze a ver los argumentos en contra que no está teniendo en cuenta. El caso contrario, el sesgo de desconfirmación, afecta a la toma de decisiones cuando un experto tiene opiniones muy adversas sobre un suceso (\cite{taber2009}).
+
+\item El sesgo por el \textbf{deseo} de la ocurrencia de un suceso. 
+
+\end{itemize}
 
 \section{Conclusiones y líneas de investigación abiertas}
 
-El estudio de los sesgos ayuda en gran medida a obtener una mejor calidad en la toma de decisiones. Conocer diferentes tipos de sesgos y maneras de corregirlos ayuda a prevenir errores a la hora de modelar los decisores. Sin embargo, muchas de las técnicas de \textit{debiasing} son puramente heurísticas y no está demostrado su funcionamiento.
+El estudio de los sesgos ayuda en gran medida a obtener una mejor calidad en la toma de decisiones. Conocer diferentes tipos de sesgos y maneras de corregirlos ayuda a prevenir errores a la hora de modelar los decisores. Sin embargo, muchas de las técnicas de \textit{debiasing} son puramente heurísticas y no está demostrado su funcionamiento, y los sesgos estudiados actualmente son los identificados al principio por \cite{tversky1974}, si son cognitivos, y por \cite{kunda1990}, si son motivacionales.
 
 En este área, la línea de investigación más antigua y prolífera se centra en el descubrimiento de sesgos y la demostración de sus efectos de manera empírica. Recientemente, el estudio de los sesgos se ha centrado más en recopilar todos los ya conocidos más que en encontrar nuevos. Otra línea de investigación poco explorada es la demostración empírica del funcionamiento de las técnicas de \textit{debiasing}, como en el caso de investigaciones recientes como la de \cite{montibeller2015}.
 
@@ -87,17 +97,32 @@ En este área, la línea de investigación más antigua y prolífera se centra e
 \bibliographystyle{plainnat}
 \begin{thebibliography}{}
 
+\bibitem[Buontempo and Brockner, 2008]{buon2008}
+Buontempo G., Brockner J. (2008). Emotional Intelligence and the Ease of Recall Judgment Bias: The Mediating Effect of Private Self‐Focused Attention. Journal of Applied Social Psychology, 38(1), 159-172.
+
 \bibitem[Chapman and Johnson, 2002]{chapman2002}
 Chapman G. B., Johnson, E. J. (2002). Incorporating the irrelevant: Anchors in judgments of belief and value. Heuristics and biases: The psychology of intuitive judgment, 120-138.
 
+\bibitem[Correia, 2011]{correia2011}
+Correia V. (2011). Biases and fallacies: The role of motivated irrationality in fallacious reasoning. Cogency, 3(1), 107-126.
+
 \bibitem[Kerr and Tindale, 2004]{kerr2004}
 Kerr NL, Tindale RS (2004) Group performance and decision making. Annu Rev Psychol 55:623–655. doi:10.1146/annurev.psych.55.090902.142009
+
+\bibitem[Krizan and Windschitl, 2007]{krizan2007}
+Krizan Z., Windschitl P. D. (2007). The influence of outcome desirability on optimism. Psychological bulletin, 133(1), 95.
 
 \bibitem[Kunda, 1990]{kunda1990}
 Kunda Z (1990) The case for motivated reasoning. Psychol Bull 108:480–498. doi:10.1037/0033-2909.108.3.480
 
 \bibitem[Montibeller and von Winterfeldt, 2015]{montibeller2015}
 Montibeller G., von Winterfeldt D. (2015). Biases and debiasing in multi-criteria decision analysis. In System Sciences (HICSS), 2015 48th Hawaii International Conference on (pp. 1218-1226). IEEE.
+
+\bibitem[Moore \textit{et al}, 2008]{moore2008}
+Moore, Don A., Paul J. Healy (2008) The Trouble with Overconfidence, Psychological Review, 115, 502–517.
+
+\bibitem[Taber \textit{et al.}, 2009]{taber2009}
+Taber C. S., Cann D., Kucsova S. (2009). The motivated processing of political arguments. Political Behavior, 31(2), 137-155.
 
 \bibitem[Toet \textit{et al.}, 2016]{toet2016}
 Toet A., Anne-Marie Brouwer, Karel van den Bosch, J.E. (Hans) Korteling (2016) Effects of personal characteristics on susceptibility to decision bias: a literature study. International Journal of Humanities and Social Sciences \textit{Vol. 8 No. 5, pp. 1-17}
@@ -109,8 +134,7 @@ Tversky A, Kahneman D (1974) Judgment under uncertainty: heuristics and biases. 
 \bibitem[von Winterfeldt and Edwards, 1986]{von1986}
 von Winterfeldt D, Edwards W (1986) Decision analysis and behavioral research. Cambridge University Press, New York, NY
 
-\bibitem[Moore \textit{et al}, 2008]{moore2008}
-Moore, Don A., Paul J. Healy (2008) The Trouble with Overconfidence, Psychological Review, 115, 502–517.
+
 
 \end{thebibliography}
 
