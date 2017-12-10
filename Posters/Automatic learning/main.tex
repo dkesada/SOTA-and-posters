@@ -106,7 +106,7 @@ Queremos seleccionar un subconjunto de variables con un método de filtrado basa
 \end{alertblock}
 
 %----------------------------------------------------------------------------------------
-%	INTRODUCTION
+%	INTRODUCCIÓN
 %----------------------------------------------------------------------------------------
 
 \begin{block}{Introducción}
@@ -118,15 +118,16 @@ La selección del subconjunto de variables es una parte esencial en el preproces
 \item Filter \cite{peng2005}, que miden la relevancia de las variables sin mucho coste pero sin asegurar buena precisión final.
 \end{itemize}
 
-En nuestro algoritmo CFSS usaremos un método de filtrado basado en clustering jerárquico para agrupar las variables redundantes en clusters y elegir las relevantes para nuestro subconjunto. Otros investigadores han usado diferentes tipos de clustering para resolver este problema \cite{mitra2002} \cite{song2013}
+En nuestro algoritmo CFSS usaremos un método de filtrado basado en clustering jerárquico para agrupar las variables redundantes en clusters y elegir las relevantes para nuestro subconjunto.
 
 \end{block}
 
 %------------------------------------------------
 
 \begin{figure}
-\includegraphics[width=0.8\linewidth]{placeholder.jpg}
-\caption{Figure caption}
+\includegraphics[width=1\linewidth]{clusterSteps.jpg}
+\caption{Cluster \textit{bottom-up} de variables}
+\label{fig:CL}
 \end{figure}
 
 %----------------------------------------------------------------------------------------
@@ -165,12 +166,14 @@ Para completar esta investigación se han usado los siguientes materiales:
 \begin{column}{\onecolwid}\vspace{-.6in} % The second column within column 2 (column 2.2)
 
 %----------------------------------------------------------------------------------------
-%	METHODS
+%	MÉTODOS
 %----------------------------------------------------------------------------------------
 
-\begin{block}{Methods}
+\begin{block}{Métodos}
 
-Lorem ipsum dolor \textbf{sit amet}, consectetur adipiscing elit. Sed laoreet accumsan mattis. Integer sapien tellus, auctor ac blandit eget, sollicitudin vitae lorem. Praesent dictum tempor pulvinar. Suspendisse potenti. Sed tincidunt varius ipsum, et porta nulla suscipit et. Etiam congue bibendum felis, ac dictum augue cursus a. \textbf{Donec} magna eros, iaculis sit amet placerat quis, laoreet id est. In ut orci purus, interdum ornare nibh. Pellentesque pulvinar, nibh ac malesuada accumsan, urna nunc convallis tortor, ac vehicula nulla tellus eget nulla. Nullam lectus tortor, \textit{consequat tempor hendrerit} quis, vestibulum in diam. Maecenas sed diam augue.
+El algoritmo comienza asignando cada variable a un cluster diferente (\textit{bottom-up}). Para medir la distancia entre dos variables miramos su similitud en base a su información mutua:
+
+
 
 \end{block}
 
@@ -197,30 +200,22 @@ Lorem ipsum dolor \textbf{sit amet}, consectetur adipiscing elit. Sed commodo mo
 \begin{column}{\onecolwid} % The first column within column 2 (column 2.1)
 
 %----------------------------------------------------------------------------------------
-%	MATHEMATICAL SECTION
+%	AGRUPACIÓN DE VARIABLES
 %----------------------------------------------------------------------------------------
 
-\begin{block}{Mathematical Section}
+\begin{block}{Agrupación de variables}
 
-Nam quis odio enim, in molestie libero. Vivamus cursus mi at nulla elementum sollicitudin. Nam quis odio enim, in molestie libero. Vivamus cursus mi at nulla elementum sollicitudin.
+Para agrupar las variables en clusters sigue un criterio de similaridad entre ellas, en vez de distancia, basado en la información mutua \cite{cover1991}:
   
 \begin{equation}
-E = mc^{2}
-\label{eqn:Einstein}
+I(f_{i},f_{j}) = \sum \sum p(f_{i},f_{j}) log \frac{p(f_{i},f_{j})}{p(f_{i})p(f_{j})}
+\label{eqn:MI}
 \end{equation}
 
-Nam quis odio enim, in molestie libero. Vivamus cursus mi at nulla elementum sollicitudin. Nam quis odio enim, in molestie libero. Vivamus cursus mi at nulla elementum sollicitudin.
-
-\begin{equation}
-\cos^3 \theta =\frac{1}{4}\cos\theta+\frac{3}{4}\cos 3\theta
-\label{eq:refname}
-\end{equation}
-
-Nam quis odio enim, in molestie libero. Vivamus cursus mi at nulla elementum sollicitudin. Nam quis odio enim, in molestie libero. Vivamus cursus mi at nulla elementum sollicitudin.
-
-\begin{equation}
-\kappa =\frac{\xi}{E_{\mathrm{max}}} %\mathbb{ZNR}
-\end{equation}
+Siendo $p(f_i)$ la función de distribución de esa variable. Dentro de un cluster, el centroide será la variable con una mayor información mutua con la clase. Este centroide determina la relevancia de un cluster.
+\newline
+\newline
+Se agrupan variables en clusters hasta que no queda ningún cluster con un sólo elemento. En ese punto, se eligen qué variables se meten al subconjunto final: se empieza a añadir desde los clusters más relevantes. De un mismo cluster se pueden meter más de una, y de clusters menos relevantes que un mínimo establecido se pueden ignorar sus variables.
 
 \end{block}
 
@@ -231,7 +226,7 @@ Nam quis odio enim, in molestie libero. Vivamus cursus mi at nulla elementum sol
 \begin{column}{\onecolwid} % The second column within column 2 (column 2.2)
 
 %----------------------------------------------------------------------------------------
-%	RESULTS
+%	RESULTADOS
 %----------------------------------------------------------------------------------------
 
 \begin{block}{Results}
@@ -302,19 +297,14 @@ Dehghan Z., Mansoori E. G. (2016). A new feature subset selection using bottom-u
 \small{\bibliographystyle{plainnat}}
 \begin{thebibliography}{}
 
+\bibitem{cover1991}
+Cover TM, Thomas JA (1991) Elements of information theory. Wiley, New York
+
 \bibitem{kohavi1997}
 Kohavi R, John GH (1997) Wrapper for feature subset selection. Artif Intell 97(1–2):273–324
 
-
-\bibitem{mitra2002}
-Mitra P, Murthy C, Pal SK (2002) Unsupervised feature selection using feature similarity. IEEE Trans Pattern Anal Mach Intell 24(3):301–312
-
 \bibitem{peng2005}
 Peng H, Long F, Ding C (2005) Feature selection based on mutual information: criteria of max-dependency, max-relevance, and min-redundance. IEEE Trans Pattern Anal Mach Intell 27(8):1226–1238
-
-\bibitem{song2013}
-Song Q, Ni J, Wang G (2013) A fast clustering-based feature
-subset selection algorithm for high-dimensional data. IEEE Trans Knowl Data Eng 25(1):1–14
 
 \end{thebibliography}
 
