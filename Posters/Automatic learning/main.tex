@@ -93,14 +93,14 @@
 %	OBJECTIVES
 %----------------------------------------------------------------------------------------
 
-\begin{alertblock}{Objectives}
+\begin{alertblock}{Objetivos}
 
-Lorem ipsum dolor sit amet, consectetur, nunc tellus pulvinar tortor, commodo eleifend risus arcu sed odio:
+Queremos seleccionar un subconjunto de variables con un método de filtrado basado en cluster jerárquico para:
 \begin{itemize}
-\item Mollis dignissim, magna augue tincidunt dolor, interdum vestibulum urna
-\item Sed aliquet luctus lectus, eget aliquet leo ullamcorper consequat. Vivamus eros sem, iaculis ut euismod non, sollicitudin vel orci.
-\item Nascetur ridiculus mus.  
-\item Euismod non erat. Nam ultricies pellentesque nunc, ultrices volutpat nisl ultrices a.
+\item Reducir la dimensionalidad de nuestro dataset.
+\item Conseguir un subconjunto de variables relevantes y no redundantes que sean igual o más eficientes y eficaces que el conjunto inicial.
+\item Aprovechar tanto la velocidad del filtrado como la capacidad para agrupar variables del clustering. 
+
 \end{itemize}
 
 \end{alertblock}
@@ -109,11 +109,16 @@ Lorem ipsum dolor sit amet, consectetur, nunc tellus pulvinar tortor, commodo el
 %	INTRODUCTION
 %----------------------------------------------------------------------------------------
 
-\begin{block}{Introduction}
+\begin{block}{Introducción}
 
-Lorem ipsum dolor \textbf{sit amet}, consectetur adipiscing elit. Sed commodo molestie porta. Sed ultrices scelerisque sapien ac commodo. Donec ut volutpat elit. Sed laoreet accumsan mattis. Integer sapien tellus, auctor ac blandit eget, sollicitudin vitae lorem. Praesent dictum tempor pulvinar. Suspendisse potenti. Sed tincidunt varius ipsum, et porta nulla suscipit et. Etiam congue bibendum felis, ac dictum augue cursus a. \textbf{Donec} magna eros, iaculis sit amet placerat quis, laoreet id est. In ut orci purus, interdum ornare nibh. Pellentesque pulvinar, nibh ac malesuada accumsan, urna nunc convallis tortor, ac vehicula nulla tellus eget nulla. Nullam lectus tortor, \textit{consequat tempor hendrerit} quis, vestibulum in diam. Maecenas sed diam augue.
+La selección del subconjunto de variables es una parte esencial en el preprocesado de los datos para reducir la dimensionalidad. Existen vários métodos para esto:
 
-This statement requires citation \cite{Smith:2012qr}.
+\begin{itemize}
+\item Wrapper \cite{kohavi1997}, que seleccionan subconjuntos de variables en base a su precisión pero son muy costosos computacionalmente.
+\item Filter \cite{peng2005}, que miden la relevancia de las variables sin mucho coste pero sin asegurar buena precisión final.
+\end{itemize}
+
+En nuestro algoritmo CFSS usaremos un método de filtrado basado en clustering jerárquico para agrupar las variables redundantes en clusters y elegir las relevantes para nuestro subconjunto. Otros investigadores han usado diferentes tipos de clustering para resolver este problema \cite{mitra2002} \cite{song2013}
 
 \end{block}
 
@@ -137,28 +142,19 @@ This statement requires citation \cite{Smith:2012qr}.
 \begin{column}{\onecolwid}\vspace{-.6in} % The first column within column 2 (column 2.1)
 
 %----------------------------------------------------------------------------------------
-%	MATERIALS
+%	MATERIALES
 %----------------------------------------------------------------------------------------
 
-\begin{block}{Materials}
+\begin{block}{Materiales}
 
-The following materials were required to complete the research:
+Para completar esta investigación se han usado los siguientes materiales:
 
 \begin{itemize}
-\item Curabitur pellentesque dignissim
-\item Eu facilisis est tempus quis
-\item Duis porta consequat lorem
-\item Eu facilisis est tempus quis
+\item 11 datasets válidos del repositorio UCI para probar el funcionamiento de CFSS.
+\item Los métodos mRMR, ReliefF y L1-LSMI para comparar el rendimiento de CFSS.
+\item El algoritmo GACH para acotar el número de clusters de CFSS.
+\item Un clasificador kNN en el que probar los subconjuntos devueltos por los métodos anteriores en sus respectivos datasets.
 \end{itemize}
-
-The materials were prepared according to the steps outlined below:
-
-\begin{enumerate}
-\item Curabitur pellentesque dignissim
-\item Eu facilisis est tempus quis
-\item Duis porta consequat lorem
-\item Curabitur pellentesque dignissim
-\end{enumerate}
 
 \end{block}
 
@@ -286,22 +282,7 @@ Nunc tempus venenatis facilisis. \textbf{Curabitur suscipit} consequat eros non 
 \end{block}
 
 %----------------------------------------------------------------------------------------
-%	ADDITIONAL INFORMATION
-%----------------------------------------------------------------------------------------
-
-\begin{block}{Additional Information}
-
-Maecenas ultricies feugiat velit non mattis. Fusce tempus arcu id ligula varius dictum. 
-\begin{itemize}
-\item Curabitur pellentesque dignissim
-\item Eu facilisis est tempus quis
-\item Duis porta consequat lorem
-\end{itemize}
-
-\end{block}
-
-%----------------------------------------------------------------------------------------
-%	REFERENCES
+%	Artículo real
 %----------------------------------------------------------------------------------------
 
 \begin{block}{Artículo real}
@@ -311,18 +292,31 @@ Dehghan Z., Mansoori E. G. (2016). A new feature subset selection using bottom-u
 \end{block}
 
 %----------------------------------------------------------------------------------------
-%	ACKNOWLEDGEMENTS
+%	Referencias
 %----------------------------------------------------------------------------------------
 
 %\setbeamercolor{block title}{fg=red,bg=white} % Change the block title color
 
 \begin{block}{Referencias}
 \nocite{*} % Insert publications even if they are not cited in the poster
-\small{\bibliographystyle{plainnat}
-\bibliography{sample}\vspace{0.75in}}
+\small{\bibliographystyle{plainnat}}
 \begin{thebibliography}{}
+
+\bibitem{kohavi1997}
+Kohavi R, John GH (1997) Wrapper for feature subset selection. Artif Intell 97(1–2):273–324
+
+
+\bibitem{mitra2002}
+Mitra P, Murthy C, Pal SK (2002) Unsupervised feature selection using feature similarity. IEEE Trans Pattern Anal Mach Intell 24(3):301–312
+
+\bibitem{peng2005}
+Peng H, Long F, Ding C (2005) Feature selection based on mutual information: criteria of max-dependency, max-relevance, and min-redundance. IEEE Trans Pattern Anal Mach Intell 27(8):1226–1238
+
+\bibitem{song2013}
+Song Q, Ni J, Wang G (2013) A fast clustering-based feature
+subset selection algorithm for high-dimensional data. IEEE Trans Knowl Data Eng 25(1):1–14
+
 \end{thebibliography}
-\small{\rmfamily{Nam mollis tristique neque eu luctus. Suspendisse rutrum congue nisi sed convallis. Aenean id neque dolor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.}} \\
 
 \end{block}
 
