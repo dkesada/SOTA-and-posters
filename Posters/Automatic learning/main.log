@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.10.14)  10 DEC 2017 23:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.10.14)  12 DEC 2017 10:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1611,17 +1611,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 332--332
  []
 
 
-Underfull \hbox (badness 1052) in paragraph at lines 332--332
-\T1/lmr/m/n/37.03 Se agru-pan vari-ables en clus-ters hasta que no
+Underfull \hbox (badness 2875) in paragraph at lines 332--332
+\T1/lmr/m/n/37.03 Se agru-parán vari-ables que no quede ningún
  []
 
-<placeholder.jpg, id=19, 351.3125pt x 193.72375pt>
-File: placeholder.jpg Graphic file (type jpg)
- <use placeholder.jpg>
-Package pdftex.def Info: placeholder.jpg used on input line 332.
-(pdftex.def)             Requested size: 610.54266pt x 336.72778pt.
 
-<logoUPM.jpg, id=20, 154.176pt x 129.3633pt>
+Underfull \hbox (badness 1122) in paragraph at lines 332--332
+\T1/lmr/m/n/37.03 clus-ter con un sólo el-e-mento. En ese punto,
+ []
+
+<gach.png, id=19, 761.84625pt x 572.89032pt>
+File: gach.png Graphic file (type png)
+ <use gach.png>
+Package pdftex.def Info: gach.png used on input line 332.
+(pdftex.def)             Requested size: 610.54266pt x 459.12584pt.
+
+Overfull \hbox (37.20563pt too wide) in paragraph at lines 332--332
+ [] 
+ []
+
+<logoUPM.jpg, id=21, 154.176pt x 129.3633pt>
 File: logoUPM.jpg Graphic file (type jpg)
  <use logoUPM.jpg>
 Package pdftex.def Info: logoUPM.jpg used on input line 332.
@@ -1639,7 +1648,7 @@ Overfull \hbox (88.20334pt too wide) has occurred while \output is active
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
- <./clusterSteps.jpg> <./placeholder.jpg> <./logoUPM.jpg>]
+ <./clusterSteps.jpg> <./gach.png> <./logoUPM.jpg>]
 \tf@nav=\write6
 \openout6 = `main.nav'.
 
@@ -1666,10 +1675,10 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 22823 strings out of 493013
- 439520 string characters out of 6135681
- 590759 words of memory out of 5000000
- 25787 multiletter control sequences out of 15000+600000
+ 22822 strings out of 493013
+ 439468 string characters out of 6135681
+ 598272 words of memory out of 5000000
+ 25785 multiletter control sequences out of 15000+600000
  74863 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,16n,71p,770b,1435s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1681,10 +1690,10 @@ fb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/t
 ype1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></u
 sr/share/texmf/fonts/type1/public/lm/lmss17.pfb></usr/share/texmf/fonts/type1/p
 ublic/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsso17.pfb>
-Output written on main.pdf (1 page, 250092 bytes).
+Output written on main.pdf (1 page, 349087 bytes).
 PDF statistics:
- 78 PDF objects out of 1000 (max. 8388607)
- 56 compressed objects within 1 object stream
+ 80 PDF objects out of 1000 (max. 8388607)
+ 57 compressed objects within 1 object stream
  8 named destinations out of 1000 (max. 500000)
  64 words of extra memory for PDF output out of 10000 (max. 10000000)
 

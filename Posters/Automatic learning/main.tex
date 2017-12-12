@@ -153,7 +153,7 @@ Para completar esta investigación se han usado los siguientes materiales:
 \begin{itemize}
 \item 11 datasets válidos del repositorio UCI para probar el funcionamiento de CFSS.
 \item Los métodos mRMR, ReliefF y L1-LSMI para comparar el rendimiento de CFSS.
-\item El algoritmo GACH para acotar el número de clusters de CFSS.
+\item El algoritmo GACH para acotar el número de variables del subconjunto final.
 \item Un clasificador kNN en el que probar los subconjuntos devueltos por los métodos anteriores en sus respectivos datasets.
 \end{itemize}
 
@@ -166,12 +166,12 @@ Para completar esta investigación se han usado los siguientes materiales:
 \begin{column}{\onecolwid}\vspace{-.6in} % The second column within column 2 (column 2.2)
 
 %----------------------------------------------------------------------------------------
-%	MÉTODOS
+%	MÉTODO GACH
 %----------------------------------------------------------------------------------------
 
-\begin{block}{Métodos}
+\begin{block}{Número de variables}
 
-El algoritmo comienza asignando cada variable a un cluster diferente (\textit{bottom-up}). Para medir la distancia entre dos variables miramos su similitud en base a su información mutua:
+Una vez que hemos agrupado las variables con CFSS, utilizamos el algoritmo GACH para establecer un tamaño adecuado del subconjunto de variables. GACH sigue también un cluster \textit{bottom-up}, fusionando clusters hasta que sólo quede uno. Tras esto, devuelve los p-valores obtenidos en cada paso de fusión. Los puntos con saltos considerables en los p-valores son candidatos a ser elegidos como punto de corte.
 
 
 
@@ -184,12 +184,12 @@ El algoritmo comienza asignando cada variable a un cluster diferente (\textit{bo
 \end{columns} % End of the split of column 2 - any content after this will now take up 2 columns width
 
 %----------------------------------------------------------------------------------------
-%	IMPORTANT RESULT
+%	RESULTADO IMPORTANTE
 %----------------------------------------------------------------------------------------
 
-\begin{alertblock}{Important Result}
+\begin{alertblock}{Unión DE CFSS y GACH}
 
-Lorem ipsum dolor \textbf{sit amet}, consectetur adipiscing elit. Sed commodo molestie porta. Sed ultrices scelerisque sapien ac commodo. Donec ut volutpat elit.
+CFSS agrupa las variables en clusters para reducir la redundancia y elegir las variables por ranking y GACH determina un valor adecuado para el tamaño del subconjunto.
 
 \end{alertblock} 
 
@@ -205,7 +205,7 @@ Lorem ipsum dolor \textbf{sit amet}, consectetur adipiscing elit. Sed commodo mo
 
 \begin{block}{Agrupación de variables}
 
-Para agrupar las variables en clusters sigue un criterio de similaridad entre ellas, en vez de distancia, basado en la información mutua \cite{cover1991}:
+Para agrupar las variables en clusters se sigue un criterio de similaridad entre ellas, en vez de distancia, basado en la información mutua \cite{cover1991}:
   
 \begin{equation}
 I(f_{i},f_{j}) = \sum \sum p(f_{i},f_{j}) log \frac{p(f_{i},f_{j})}{p(f_{i})p(f_{j})}
@@ -215,7 +215,7 @@ I(f_{i},f_{j}) = \sum \sum p(f_{i},f_{j}) log \frac{p(f_{i},f_{j})}{p(f_{i})p(f_
 Siendo $p(f_i)$ la función de distribución de esa variable. Dentro de un cluster, el centroide será la variable con una mayor información mutua con la clase. Este centroide determina la relevancia de un cluster.
 \newline
 \newline
-Se agrupan variables en clusters hasta que no queda ningún cluster con un sólo elemento. En ese punto, se eligen qué variables se meten al subconjunto final: se empieza a añadir desde los clusters más relevantes. De un mismo cluster se pueden meter más de una, y de clusters menos relevantes que un mínimo establecido se pueden ignorar sus variables.
+Se agruparán variables que no quede ningún cluster con un sólo elemento. En ese punto, se eligen qué variables se meten al subconjunto final: se empieza a añadir desde los clusters más relevantes. De un mismo cluster se pueden meter más de una, y de clusters menos relevantes que un mínimo establecido se pueden ignorar sus variables.
 
 \end{block}
 
@@ -224,32 +224,32 @@ Se agrupan variables en clusters hasta que no queda ningún cluster con un sólo
 \end{column} % End of column 2.1
 
 \begin{column}{\onecolwid} % The second column within column 2 (column 2.2)
+\begin{figure}
+\includegraphics[width=0.8\linewidth]{gach.png}
+\caption{Estimación del número de variables con GACH}
+\end{figure}
 
 %----------------------------------------------------------------------------------------
 %	RESULTADOS
 %----------------------------------------------------------------------------------------
 
-\begin{block}{Results}
+\begin{block}{Resultados}
 
-\begin{figure}
-\includegraphics[width=0.8\linewidth]{placeholder.jpg}
-\caption{Figure caption}
-\end{figure}
 
-Nunc tempus venenatis facilisis. Curabitur suscipit consequat eros non porttitor. Sed a massa dolor, id ornare enim:
+
+CFSS obtiene mejores resultados en el promedio de todos los datasets que el resto de algoritmos de selección de variables probados.
 
 \begin{table}
 \vspace{2ex}
-\begin{tabular}{l l l}
+\begin{tabular}{l l l l l}
 \toprule
-\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
+\textbf{Promedios} & \textbf{ReliefF} & \textbf{mRMR} & \textbf{L1-LSMI} & \textbf{CFSS}\\
 \midrule
-Treatment 1 & 0.0003262 & 0.562 \\
-Treatment 2 & 0.0015681 & 0.910 \\
-Treatment 3 & 0.0009271 & 0.296 \\
+Tiempo (seg.) & 3.17 & 12.84 & 28.09 & \textbf{2.63} \\
+Precisión & 80.41 & 81.25 & 77.68 & \textbf{83.17} \\
 \bottomrule
 \end{tabular}
-\caption{Table caption}
+\caption{Resultados promedio}
 \end{table}
 
 \end{block}
@@ -270,9 +270,9 @@ Treatment 3 & 0.0009271 & 0.296 \\
 %	CONCLUSION
 %----------------------------------------------------------------------------------------
 
-\begin{block}{Conclusion}
+\begin{block}{Conclusión}
 
-Nunc tempus venenatis facilisis. \textbf{Curabitur suscipit} consequat eros non porttitor. Sed a massa dolor, id ornare enim. Fusce quis massa dictum tortor \textbf{tincidunt mattis}. Donec quam est, lobortis quis pretium at, laoreet scelerisque lacus. Nam quis odio enim, in molestie libero. Vivamus cursus mi at \textit{nulla elementum sollicitudin}.
+El método CFSS basado en clustering jerárquico propuesto representa una alternativa nueva a la hora de seleccionar un subconjunto de variables. Este agrupa las variables redundantes en clusters y elige sólo variables relevantes para el subconjunto final. El algoritmo GACH proporciona una buena estimación del número de variables que se deberían elegir. Los resultados de CFSS obtenidos son buenos en comparación con los algoritmos alternativos propuestos. En trabajo futuro habría que estudiar mejor cuál es el número de variables representativas de cada cluster y una condición de parada más robusta a la hora de fusionar clusters.
 
 \end{block}
 
