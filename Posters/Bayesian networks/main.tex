@@ -65,7 +65,7 @@
 %	TITLE SECTION 
 %----------------------------------------------------------------------------------------
 
-\title{An empirical study of Bayesian network inference with simple propagation} % Poster title
+\title{Bayesian network inference with simple propagation} % Poster title
 
 \author{David Quesada López} % Author(s)
 
@@ -95,12 +95,12 @@
 
 \begin{alertblock}{Objectives}
 
-Lorem ipsum dolor sit amet, consectetur, nunc tellus pulvinar tortor, commodo eleifend risus arcu sed odio:
+We propose \textit{simple propagation} (sp), a new algorithm for tree propagation in exact inference in discrete bayesian networks. It aims to:
 \begin{itemize}
-\item Mollis dignissim, magna augue tincidunt dolor, interdum vestibulum urna
-\item Sed aliquet luctus lectus, eget aliquet leo ullamcorper consequat. Vivamus eros sem, iaculis ut euismod non, sollicitudin vel orci.
-\item Nascetur ridiculus mus.  
-\item Euismod non erat. Nam ultricies pellentesque nunc, ultrices volutpat nisl ultrices a.
+\item Outperform lazy propagation in terms of efficiency.
+
+\item Have a good performance in optimal joint trees. 
+
 \end{itemize}
 
 \end{alertblock}
@@ -111,9 +111,10 @@ Lorem ipsum dolor sit amet, consectetur, nunc tellus pulvinar tortor, commodo el
 
 \begin{block}{Introduction}
 
-Lorem ipsum dolor \textbf{sit amet}, consectetur adipiscing elit. Sed commodo molestie porta. Sed ultrices scelerisque sapien ac commodo. Donec ut volutpat elit. Sed laoreet accumsan mattis. Integer sapien tellus, auctor ac blandit eget, sollicitudin vitae lorem. Praesent dictum tempor pulvinar. Suspendisse potenti. Sed tincidunt varius ipsum, et porta nulla suscipit et. Etiam congue bibendum felis, ac dictum augue cursus a. \textbf{Donec} magna eros, iaculis sit amet placerat quis, laoreet id est. In ut orci purus, interdum ornare nibh. Pellentesque pulvinar, nibh ac malesuada accumsan, urna nunc convallis tortor, ac vehicula nulla tellus eget nulla. Nullam lectus tortor, \textit{consequat tempor hendrerit} quis, vestibulum in diam. Maecenas sed diam augue.
-
-This statement requires citation \cite{Smith:2012qr}.
+Exact inference is a method used to answer queries asked to a bayesian network. One of the ways to go around exact inference is through junction trees. The junction trees are built from the DAG, and tipically at each node of the tree a potencial is computed by multiplying the probability tables inside it.
+\newline
+\newline
+Lazy propagation \cite{madsen1999} keeps a multiplicative factorization of potentials at each node. This helps to remove irrelevant potencials
 
 \end{block}
 
@@ -142,67 +143,21 @@ This statement requires citation \cite{Smith:2012qr}.
 
 \begin{block}{Materials}
 
-The following materials were required to complete the research:
+To conduct a comparison between the performance of LP and SP we used 28 benchmark bayesian networks. Then we generate 100 sets of evidence randomly and compute the message passing to calculate the posterior probabilities given the evidence for each non-evidence variable. Then we compare the average results in computation time of LP and SP.
 
-\begin{itemize}
-\item Curabitur pellentesque dignissim
-\item Eu facilisis est tempus quis
-\item Duis porta consequat lorem
-\item Eu facilisis est tempus quis
-\end{itemize}
-
-The materials were prepared according to the steps outlined below:
-
-\begin{enumerate}
-\item Curabitur pellentesque dignissim
-\item Eu facilisis est tempus quis
-\item Duis porta consequat lorem
-\item Curabitur pellentesque dignissim
-\end{enumerate}
 
 \end{block}
 
-%----------------------------------------------------------------------------------------
+\begin{alertblock}{Only for optimal junction trees}
 
-\end{column} % End of column 2.1
-
-\begin{column}{\onecolwid}\vspace{-.6in} % The second column within column 2 (column 2.2)
-
-%----------------------------------------------------------------------------------------
-%	METHODS
-%----------------------------------------------------------------------------------------
-
-\begin{block}{Methods}
-
-Lorem ipsum dolor \textbf{sit amet}, consectetur adipiscing elit. Sed laoreet accumsan mattis. Integer sapien tellus, auctor ac blandit eget, sollicitudin vitae lorem. Praesent dictum tempor pulvinar. Suspendisse potenti. Sed tincidunt varius ipsum, et porta nulla suscipit et. Etiam congue bibendum felis, ac dictum augue cursus a. \textbf{Donec} magna eros, iaculis sit amet placerat quis, laoreet id est. In ut orci purus, interdum ornare nibh. Pellentesque pulvinar, nibh ac malesuada accumsan, urna nunc convallis tortor, ac vehicula nulla tellus eget nulla. Nullam lectus tortor, \textit{consequat tempor hendrerit} quis, vestibulum in diam. Maecenas sed diam augue.
-
-\end{block}
-
-%----------------------------------------------------------------------------------------
-
-\end{column} % End of column 2.2
-
-\end{columns} % End of the split of column 2 - any content after this will now take up 2 columns width
-
-%----------------------------------------------------------------------------------------
-%	IMPORTANT RESULT
-%----------------------------------------------------------------------------------------
-
-\begin{alertblock}{Important Result}
-
-Lorem ipsum dolor \textbf{sit amet}, consectetur adipiscing elit. Sed commodo molestie porta. Sed ultrices scelerisque sapien ac commodo. Donec ut volutpat elit.
+Simple propagation performance significantly degrades in non-optimal junction trees. 
 
 \end{alertblock} 
 
-%----------------------------------------------------------------------------------------
-
-\begin{columns}[t,totalwidth=\twocolwid] % Split up the two columns wide column again
-
-\begin{column}{\onecolwid} % The first column within column 2 (column 2.1)
-
-%----------------------------------------------------------------------------------------
-%	MATHEMATICAL SECTION
-%----------------------------------------------------------------------------------------
+\begin{figure}
+\includegraphics[width=0.8\linewidth]{optimal.png}
+\caption{Non-optimal and optimal join trees of a BN}
+\end{figure}
 
 \begin{block}{Mathematical Section}
 
@@ -232,11 +187,17 @@ Nam quis odio enim, in molestie libero. Vivamus cursus mi at nulla elementum sol
 
 \end{column} % End of column 2.1
 
-\begin{column}{\onecolwid} % The second column within column 2 (column 2.2)
+\begin{column}{\onecolwid}\vspace{-.6in} % The second column within column 2 (column 2.2)
 
 %----------------------------------------------------------------------------------------
-%	RESULTS
+%	METHODS
 %----------------------------------------------------------------------------------------
+
+\begin{block}{Methods}
+
+Lorem ipsum dolor \textbf{sit amet}, consectetur adipiscing elit. Sed laoreet accumsan mattis. Integer sapien tellus, auctor ac blandit eget, sollicitudin vitae lorem. Praesent dictum tempor pulvinar. Suspendisse potenti. Sed tincidunt varius ipsum, et porta nulla suscipit et. Etiam congue bibendum felis, ac dictum augue cursus a. \textbf{Donec} magna eros, iaculis sit amet placerat quis, laoreet id est. In ut orci purus, interdum ornare nibh. Pellentesque pulvinar, nibh ac malesuada accumsan, urna nunc convallis tortor, ac vehicula nulla tellus eget nulla. Nullam lectus tortor, \textit{consequat tempor hendrerit} quis, vestibulum in diam. Maecenas sed diam augue.
+
+\end{block}
 
 \begin{block}{Results}
 
@@ -245,7 +206,7 @@ Nam quis odio enim, in molestie libero. Vivamus cursus mi at nulla elementum sol
 \caption{Figure caption}
 \end{figure}
 
-Nunc tempus venenatis facilisis. Curabitur suscipit consequat eros non porttitor. Sed a massa dolor, id ornare enim:
+Our study shows that SP is faster than LP in 18 cases, equal in 5 cases and slower in 5 cases. When SP is slower, further research showed that it is because LP has more elimination orderings to choose from, and when it is considerably better than the one SP uses, it is faster even though it spent more time building graphs to determine this ordering. This is also the case why LP is better for non-optimal join trees.
 
 \begin{table}
 \vspace{2ex}
@@ -267,6 +228,19 @@ Treatment 3 & 0.0009271 & 0.296 \\
 
 \end{column} % End of column 2.2
 
+\end{columns} % End of the split of column 2 - any content after this will now take up 2 columns width
+
+%----------------------------------------------------------------------------------------
+%	Optimal join trees
+%----------------------------------------------------------------------------------------
+
+
+
+%----------------------------------------------------------------------------------------
+
+\begin{columns}[t,totalwidth=\twocolwid] % Split up the two columns wide column again
+
+
 \end{columns} % End of the split of column 2
 
 \end{column} % End of the second column
@@ -281,22 +255,12 @@ Treatment 3 & 0.0009271 & 0.296 \\
 
 \begin{block}{Conclusion}
 
-Nunc tempus venenatis facilisis. \textbf{Curabitur suscipit} consequat eros non porttitor. Sed a massa dolor, id ornare enim. Fusce quis massa dictum tortor \textbf{tincidunt mattis}. Donec quam est, lobortis quis pretium at, laoreet scelerisque lacus. Nam quis odio enim, in molestie libero. Vivamus cursus mi at \textit{nulla elementum sollicitudin}.
-
-\end{block}
-
-%----------------------------------------------------------------------------------------
-%	ADDITIONAL INFORMATION
-%----------------------------------------------------------------------------------------
-
-\begin{block}{Additional Information}
-
-Maecenas ultricies feugiat velit non mattis. Fusce tempus arcu id ligula varius dictum. 
 \begin{itemize}
-\item Curabitur pellentesque dignissim
-\item Eu facilisis est tempus quis
-\item Duis porta consequat lorem
+\item Simple propagation for exact inference performs in general better than lazy propagation when provided with an optimal join tree.
+\item It's performance doesn't seem to improve even with our proposed heuristics in non-optimal join trees. 
+\item It is still an exact inference method, so its use is restricted to tractable bayesian networks.
 \end{itemize}
+ 
 
 \end{block}
 
@@ -321,6 +285,10 @@ Butz C. J., Oliveira J. S., dos Santos A. E., Madsen, A. L. (2018). An empirical
 \small{\bibliographystyle{plainnat}
 \bibliography{sample}\vspace{0.75in}}
 \begin{thebibliography}{}
+
+\bibitem{madsen1999}
+A.L. Madsen, F.V. Jensen, Lazy propagation: a junction tree inference algorithm based on lazy evaluation, Artif. Intell. 113 (1–2) (1999) 203–245
+
 \end{thebibliography}
 \small{\rmfamily{Nam mollis tristique neque eu luctus. Suspendisse rutrum congue nisi sed convallis. Aenean id neque dolor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.}} \\
 
