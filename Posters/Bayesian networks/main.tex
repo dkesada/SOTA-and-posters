@@ -24,7 +24,7 @@
 
 \documentclass[final]{beamer}
 
-\usepackage[scale=1.24]{beamerposter} % Use the beamerposter package for laying out the poster
+\usepackage[scale=1.4]{beamerposter} % Use the beamerposter package for laying out the poster
 
 \usepackage[utf8]{inputenc}
 
@@ -163,15 +163,8 @@ Simple propagation performance significantly degrades in non-optimal join trees.
 
 \begin{block}{One in, one out}
 
-When a node N is ready to construct its message to a neighbour sharing
-variables S, SP recursively identifies those potentials at N with a “one in, one out” property, namely,
-the potential has at least one non-evidence variable in S and another not in S. SP then eliminates
-each “out” variable. SP is often faster than LP in experimental results involving optimal (or close
-to) join trees built from numerous real-world and benchmark BNs (Butz et al., 2016)
-
-By “one in, one out”, we mean a
-potential in F has at least one non-evidence variable in the separator and another non-evidence
-variable not in the separator.
+This process takes place in the join tree, at the time when we can start the message passing in a node. By “one in, one out”, we mean a potential in F has at least one non-evidence variable in the separator with other node and another non-evidence variable not in the separator. SP then eliminates
+each “out” variable. 
 
 
 
@@ -265,22 +258,22 @@ We also tried our heuristics in selecting the order of evaluation of potencials:
 \end{block}
 
 %----------------------------------------------------------------------------------------
-%	Artículo real
+%	Original paper
 %----------------------------------------------------------------------------------------
 
-\begin{block}{Artículo real}
+\begin{block}{Original paper}
 
 Butz C. J., Oliveira J. S., dos Santos A. E., Madsen, A. L. (2018). An empirical study of Bayesian network inference with simple propagation. \textit{International Journal of Approximate Reasoning}, 92, 198-211.
 
 \end{block}
 
 %----------------------------------------------------------------------------------------
-%	Referencias
+%	References
 %----------------------------------------------------------------------------------------
 
 %\setbeamercolor{block title}{fg=red,bg=white} % Change the block title color
 
-\begin{block}{Referencias}
+\begin{block}{References}
 \nocite{*} % Insert publications even if they are not cited in the poster
 \small{\bibliographystyle{plainnat}
 \bibliography{sample}\vspace{0.75in}}
@@ -294,12 +287,6 @@ A.L. Madsen, F.V. Jensen, Lazy propagation: a junction tree inference algorithm 
 
 \end{block}
 
-%----------------------------------------------------------------------------------------
-%	CONTACT INFORMATION
-%----------------------------------------------------------------------------------------
-
-%\setbeamercolor{block alerted title}{fg=black,bg=norange} % Change the alert block title colors
-%\setbeamercolor{block alerted body}{fg=black,bg=white} % Change the alert block body colors
 
 \begin{center}
 \begin{tabular}{ccc}
