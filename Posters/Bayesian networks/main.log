@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.10.14)  12 DEC 2017 16:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.10.14)  12 DEC 2017 18:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1591,35 +1591,14 @@ LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <25.92088> not available
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <18.515> not available
 (Font)              size <17.28> substituted on input line 316.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 316--316
-
- []
-
-
-Underfull \hbox (badness 8000) in paragraph at lines 316--316
-\T1/lmr/m/n/37.03 Lazy prop-a-ga-tion [[]] keeps a mul-ti-plica-tive
- []
-
-<placeholder.jpg, id=16, 351.3125pt x 193.72375pt>
-File: placeholder.jpg Graphic file (type jpg)
- <use placeholder.jpg>
-Package pdftex.def Info: placeholder.jpg used on input line 316.
-(pdftex.def)             Requested size: 610.54266pt x 336.72778pt.
-
-<optimal.png, id=17, 2342.7525pt x 1410.26875pt>
+<optimal.png, id=16, 2342.7525pt x 1410.26875pt>
 File: optimal.png Graphic file (type png)
  <use optimal.png>
 Package pdftex.def Info: optimal.png used on input line 316.
 (pdftex.def)             Requested size: 610.54266pt x 367.52199pt.
-File: placeholder.jpg Graphic file (type jpg)
-
-<use placeholder.jpg>
-Package pdftex.def Info: placeholder.jpg used on input line 316.
-(pdftex.def)             Requested size: 610.54266pt x 336.72778pt.
 
 No file main.bbl.
-<logoUPM.jpg, id=19, 154.176pt x 129.3633pt>
+<logoUPM.jpg, id=18, 154.176pt x 129.3633pt>
 File: logoUPM.jpg Graphic file (type jpg)
  <use logoUPM.jpg>
 Package pdftex.def Info: logoUPM.jpg used on input line 316.
@@ -1631,17 +1610,13 @@ Overfull \hbox (4.99402pt too wide) detected at line 316
  []
 
 
-Overfull \vbox (117.36465pt too high) detected at line 316
- []
-
-
 Overfull \hbox (88.20334pt too wide) has occurred while \output is active
 []
  []
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
- <./placeholder.jpg> <./optimal.png> <./logoUPM.jpg>]
+ <./optimal.png> <./logoUPM.jpg>]
 \tf@nav=\write6
 \openout6 = `main.nav'.
 
@@ -1665,24 +1640,22 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 22814 strings out of 493013
- 439361 string characters out of 6135681
- 591857 words of memory out of 5000000
- 25779 multiletter control sequences out of 15000+600000
+ 22791 strings out of 493013
+ 438824 string characters out of 6135681
+ 589010 words of memory out of 5000000
+ 25759 multiletter control sequences out of 15000+600000
  72048 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,16n,71p,770b,1463s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dv
-ips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/shar
-e/texmf/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm/lm
-bx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/f
-onts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.p
-fb></usr/share/texmf/fonts/type1/public/lm/lmss17.pfb></usr/share/texmf/fonts/t
-ype1/public/lm/lmssbx10.pfb>
-Output written on main.pdf (1 page, 244999 bytes).
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share/texmf/fonts/enc/d
+vips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/shar
+e/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm
+/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss17.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmssbx10.pfb>
+Output written on main.pdf (1 page, 218147 bytes).
 PDF statistics:
- 66 PDF objects out of 1000 (max. 8388607)
- 45 compressed objects within 1 object stream
- 6 named destinations out of 1000 (max. 500000)
- 64 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 55 PDF objects out of 1000 (max. 8388607)
+ 36 compressed objects within 1 object stream
+ 4 named destinations out of 1000 (max. 500000)
+ 59 words of extra memory for PDF output out of 10000 (max. 10000000)
 

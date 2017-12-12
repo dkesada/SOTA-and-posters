@@ -95,11 +95,11 @@
 
 \begin{alertblock}{Objectives}
 
-We propose \textit{simple propagation} (sp), a new algorithm for tree propagation in exact inference in discrete bayesian networks. It aims to:
+We propose \textit{simple propagation}, a new algorithm for tree propagation in exact inference in discrete bayesian networks. It aims to:
 \begin{itemize}
 \item Outperform lazy propagation in terms of efficiency.
 
-\item Have a good performance in optimal joint trees. 
+\item Have a good performance in optimal join trees. 
 
 \end{itemize}
 
@@ -111,19 +111,21 @@ We propose \textit{simple propagation} (sp), a new algorithm for tree propagatio
 
 \begin{block}{Introduction}
 
-Exact inference is a method used to answer queries asked to a bayesian network. One of the ways to go around exact inference is through junction trees. The junction trees are built from the DAG, and tipically at each node of the tree a potencial is computed by multiplying the probability tables inside it.
-\newline
-\newline
-Lazy propagation \cite{madsen1999} keeps a multiplicative factorization of potentials at each node. This helps to remove irrelevant potencials
+Exact inference is a method used to answer queries asked to bayesian networks. One of the ways to go around exact inference is through jion trees. This trees are built from the DAG, and tipically at each node of the tree a potencial is computed by multiplying the probability tables inside it.
+
+\begin{itemize}
+
+\item Lazy propagation (LP) \cite{madsen1999} keeps a multiplicative factorization of potentials at each node. This helps to identify irrelevant potencials at the moment of sending a message from a node. When it identifies the relevant potencials, LP builds a graph to determine elimination ordering of the variables.
+
+\item Simple propagation (SP) uses a "one in, one out" property at the moment of sending a message from a node to eliminate variables. This way, it works greedily towards the elimination of variables, not needing to build a graph to determine the elimination order
+
+\end{itemize}
+
 
 \end{block}
 
 %------------------------------------------------
 
-\begin{figure}
-\includegraphics[width=0.8\linewidth]{placeholder.jpg}
-\caption{Figure caption}
-\end{figure}
 
 %----------------------------------------------------------------------------------------
 
@@ -143,14 +145,14 @@ Lazy propagation \cite{madsen1999} keeps a multiplicative factorization of poten
 
 \begin{block}{Materials}
 
-To conduct a comparison between the performance of LP and SP we used 28 benchmark bayesian networks. Then we generate 100 sets of evidence randomly and compute the message passing to calculate the posterior probabilities given the evidence for each non-evidence variable. Then we compare the average results in computation time of LP and SP.
+To conduct a comparison between the performance of LP and SP we used 28 benchmark bayesian networks. Then we generate 100 sets of evidence randomly and compute the message passing to calculate the posterior probabilities given the evidence for each non-evidence variable. Finally, we compare the average results in computation time of LP and SP.
 
 
 \end{block}
 
-\begin{alertblock}{Only for optimal junction trees}
+\begin{alertblock}{Only for optimal join trees}
 
-Simple propagation performance significantly degrades in non-optimal junction trees. 
+Simple propagation performance significantly degrades in non-optimal join trees. 
 
 \end{alertblock} 
 
@@ -159,27 +161,19 @@ Simple propagation performance significantly degrades in non-optimal junction tr
 \caption{Non-optimal and optimal join trees of a BN}
 \end{figure}
 
-\begin{block}{Mathematical Section}
+\begin{block}{One in, one out}
 
-Nam quis odio enim, in molestie libero. Vivamus cursus mi at nulla elementum sollicitudin. Nam quis odio enim, in molestie libero. Vivamus cursus mi at nulla elementum sollicitudin.
-  
-\begin{equation}
-E = mc^{2}
-\label{eqn:Einstein}
-\end{equation}
+When a node N is ready to construct its message to a neighbour sharing
+variables S, SP recursively identifies those potentials at N with a “one in, one out” property, namely,
+the potential has at least one non-evidence variable in S and another not in S. SP then eliminates
+each “out” variable. SP is often faster than LP in experimental results involving optimal (or close
+to) join trees built from numerous real-world and benchmark BNs (Butz et al., 2016)
 
-Nam quis odio enim, in molestie libero. Vivamus cursus mi at nulla elementum sollicitudin. Nam quis odio enim, in molestie libero. Vivamus cursus mi at nulla elementum sollicitudin.
+By “one in, one out”, we mean a
+potential in F has at least one non-evidence variable in the separator and another non-evidence
+variable not in the separator.
 
-\begin{equation}
-\cos^3 \theta =\frac{1}{4}\cos\theta+\frac{3}{4}\cos 3\theta
-\label{eq:refname}
-\end{equation}
 
-Nam quis odio enim, in molestie libero. Vivamus cursus mi at nulla elementum sollicitudin. Nam quis odio enim, in molestie libero. Vivamus cursus mi at nulla elementum sollicitudin.
-
-\begin{equation}
-\kappa =\frac{\xi}{E_{\mathrm{max}}} %\mathbb{ZNR}
-\end{equation}
 
 \end{block}
 
@@ -190,21 +184,25 @@ Nam quis odio enim, in molestie libero. Vivamus cursus mi at nulla elementum sol
 \begin{column}{\onecolwid}\vspace{-.6in} % The second column within column 2 (column 2.2)
 
 %----------------------------------------------------------------------------------------
-%	METHODS
+%	Heuristics
 %----------------------------------------------------------------------------------------
 
-\begin{block}{Methods}
+\begin{block}{Heuristics proposed}
 
-Lorem ipsum dolor \textbf{sit amet}, consectetur adipiscing elit. Sed laoreet accumsan mattis. Integer sapien tellus, auctor ac blandit eget, sollicitudin vitae lorem. Praesent dictum tempor pulvinar. Suspendisse potenti. Sed tincidunt varius ipsum, et porta nulla suscipit et. Etiam congue bibendum felis, ac dictum augue cursus a. \textbf{Donec} magna eros, iaculis sit amet placerat quis, laoreet id est. In ut orci purus, interdum ornare nibh. Pellentesque pulvinar, nibh ac malesuada accumsan, urna nunc convallis tortor, ac vehicula nulla tellus eget nulla. Nullam lectus tortor, \textit{consequat tempor hendrerit} quis, vestibulum in diam. Maecenas sed diam augue.
+We propose some heuristics to select the order in wich we evaluate potentials satisfying the “one in, one out” property based on:
+
+\begin{itemize}
+
+\item Increasing number of variables in X.
+\item Decreasing number of variables in X.
+\item Increasing number of variables of both X and S.
+\item Decreasing number of variables of both X and S.
+
+\end{itemize}
 
 \end{block}
 
 \begin{block}{Results}
-
-\begin{figure}
-\includegraphics[width=0.8\linewidth]{placeholder.jpg}
-\caption{Figure caption}
-\end{figure}
 
 Our study shows that SP is faster than LP in 18 cases, equal in 5 cases and slower in 5 cases. When SP is slower, further research showed that it is because LP has more elimination orderings to choose from, and when it is considerably better than the one SP uses, it is faster even though it spent more time building graphs to determine this ordering. This is also the case why LP is better for non-optimal join trees.
 
@@ -212,15 +210,17 @@ Our study shows that SP is faster than LP in 18 cases, equal in 5 cases and slow
 \vspace{2ex}
 \begin{tabular}{l l l}
 \toprule
-\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
+\textbf{Heuristic} & \textbf{Wins} \\
 \midrule
-Treatment 1 & 0.0003262 & 0.562 \\
-Treatment 2 & 0.0015681 & 0.910 \\
-Treatment 3 & 0.0009271 & 0.296 \\
+Arbitrary & 6 \\
+Increasing X & 1 \\
+Decreasing size S & 1 \\
 \bottomrule
 \end{tabular}
-\caption{Table caption}
+\caption{Heuristic selection results}
 \end{table}
+
+We also tried our heuristics in selecting the order of evaluation of potencials: out of 29 BNs, heuristic and arbitrary order tied in 13 cases, arbitrary won in 6 and heuristic won in 2. This means that the selection of the order is not really relevant to SP.
 
 \end{block}
 
@@ -257,7 +257,7 @@ Treatment 3 & 0.0009271 & 0.296 \\
 
 \begin{itemize}
 \item Simple propagation for exact inference performs in general better than lazy propagation when provided with an optimal join tree.
-\item It's performance doesn't seem to improve even with our proposed heuristics in non-optimal join trees. 
+\item It's performance doesn't seem to improve even with our proposed heuristics in optimal or non-optimal join trees. 
 \item It is still an exact inference method, so its use is restricted to tractable bayesian networks.
 \end{itemize}
  
@@ -290,7 +290,7 @@ Butz C. J., Oliveira J. S., dos Santos A. E., Madsen, A. L. (2018). An empirical
 A.L. Madsen, F.V. Jensen, Lazy propagation: a junction tree inference algorithm based on lazy evaluation, Artif. Intell. 113 (1–2) (1999) 203–245
 
 \end{thebibliography}
-\small{\rmfamily{Nam mollis tristique neque eu luctus. Suspendisse rutrum congue nisi sed convallis. Aenean id neque dolor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.}} \\
+
 
 \end{block}
 
