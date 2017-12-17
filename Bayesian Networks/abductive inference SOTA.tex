@@ -40,22 +40,28 @@
 KEY WORDS: Bayesian networks; Abductive inference; Approximate inference
 
 
-
-
 \section{Introduction}
 
-About the problem.
+A Bayesian network is a directed acyclic graph (DAG) where you represent each node as a random variable and the edges represent the dependence or independence among them. Each node also has associated a conditional probability distribution conditioned to its parents that represents the probability distribution of the node's variable.
 
+One of the problems associated with BNs is abductive inference, which consists in finding the maximum \textit{a posteriori} probability (MAP) state of the network given some evidence on the state of variables of the network. In general, we are interested in the \textit{K} most probable explanations (k-MPE). This problem is known to be NP-hard (\cite{shimony1994}), and most of the times trying to obtain an exact MPE turns out to be intractable. This is the reason why most researchers focus on getting \textit{K} approximate MPEs instead of the exact one. 
 
+% formula MPE?
+
+Abductive inference can also be called total, when we want to know the whole network's k-MPE, or partial, when we only want the \textit{K} most probable state assignments for a subset of the variables known as the explanation set 
+(\cite{fortier2013}).
+
+In this state of the art, we will review some methods to perform total and partial abductive inference on a Bayesian network.
 
 \section{State-of-the-art}
 
-Describe what others have done, citing their works. There are different formats: a paper as \cite{uncu2007}, a book as \cite{hosmer-lemeshow2000}, or a book chapter as \cite{wold75} or as in the proceedings of a conference (\cite{shakhnarovich2001icml}).
-
-    \subsection{More specific}
 
 
-Perhaps some subsections are needed.
+\subsection{Total abductive inference}
+
+\subsection{Partial abductive inference}
+
+
 
 \section{Conclusions and future research}
 
@@ -77,6 +83,9 @@ Fortier N., Sheppard J., Pillai K. G. (2013, April). Bayesian abductive inferenc
 
 \bibitem[Gelsema, 1995]{gelsema1995}
 Gelsema E. S. (1995). Abductive reasoning in Bayesian belief networks using a genetic algorithm. Pattern Recognition Letters, 16(8), 865-871.
+
+\bibitem[Shimony, 1994]{shimony1994}
+Shimony S. (1994). Finding maps for belief networks is NP-hard. Artificial Intelligence 68, 399-410.
 
 \end{thebibliography}
 
