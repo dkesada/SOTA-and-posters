@@ -48,16 +48,41 @@ One of the problems associated with BNs is abductive inference, which consists i
 
 % formula MPE?
 
-Abductive inference can also be called total, when we want to know the whole network's k-MPE, or partial, when we only want the \textit{K} most probable state assignments for a subset of the variables known as the explanation set 
+Abductive inference can also be called total, when we want to know the whole network's k-MPEs, or partial, when we only want the \textit{K} most probable state assignments for a subset of the variables known as the explanation set 
 (\cite{fortier2013}).
 
 In this state of the art, we will review some methods to perform total and partial abductive inference on a Bayesian network.
 
 \section{State-of-the-art}
 
+We can formally describe the problem of the k-MPE as: given a set of unobserved variables $p(X_u)$, a set of observed variables $p(X_o)$, we want to find the configuration $p(x^*_u)$ such that:
+
+\begin{equation}
+x^*_u = arg\max_{x_u} P(x_u | x_o)
+\label{eqn:MPE}
+\end{equation}
+
+Which means we are aiming to maximize the MAP state of the network by finding an appropiate $p(x^*_u)$ (\cite{deCampos2002}).
+
+Traditionally, there has been three solutions to this problem (\cite{deCampos2001}):
+
+\begin{itemize}
+\item Through the computation of the \textit{chain rule}, which is intractable in even the simplest of networks .
+\item Through belief propagation.
+\item Through abductive inference.
+\end{itemize}
 
 
 \subsection{Total abductive inference}
+It has been proven that belief propagation and abductive inference are both equal in complexity when finding the MPE of a network (\cite{dawid1992}), however the problem of finding the k-MPE is a more complex one.
+
+There are two ways of tackling this problem:
+
+\begin{itemize}
+\item With exact computation. This is the case of \cite{dawid1992}, were a belief propagation algorithm was adapted to find the MPE of a network by raplacing the summation by maximum in the message passing. This method was able to only find the first 3 MPEs of the network (\cite{nilsson1998}), so it had to be modified to be able to find the k-MPE.
+
+\item With approximate results. Here, we treat the problem as an optimization one. One approach was performed by \cite{gelsema1995} using a genetic algorithm (GA). In this method, each individual of the population represents a possible state of the network by representing the presence or absence of the nodes with a binary vector. Genetic programming is also used by \cite{rojas1993} to solve this problem. Here, they represent the network's graph in each individual. Another method was proposed by \cite{welch1996}, where he used a Montecarlo simulation to initialize the population and then used a GA similar to that of Gelsema.
+\end{itemize}
 
 \subsection{Partial abductive inference}
 
@@ -72,8 +97,14 @@ What are the main open lines for research.
 \bibliographystyle{plainnat}
 \begin{thebibliography}{}
 
+\bibitem[Dawid, 1992]{dawid1992}
+Dawid A. P. (1992). Applications of a general propagation algorithm for probabilistic expert systems. Statistics and computing, 2(1), 25-36.
+
 \bibitem[De Campos \textit{et al.}, 1999]{deCampos1999}
 De Campos L. M., Gámez J. A., Moral S. (1999). Partial abductive inference in Bayesian belief networks using a genetic algorithm. Pattern Recognition Letters, 20(11), 1211-1217.
+
+\bibitem[De Campos \textit{et al.}, 2001]{deCampos2001}
+De Campos L. M., Gámez J. A., Moral S. (2001). Partial abductive inference in Bayesian belief networks by simulated annealing. International Journal of Approximate Reasoning, 27(3), 263-283.
 
 \bibitem[De Campos \textit{et al.}, 2002]{deCampos2002}
 De Campos L. M., Gamez J. A., Moral S. (2002). Partial abductive inference in Bayesian belief networks-an evolutionary computation approach by using problem-specific genetic operators. IEEE Transactions on Evolutionary Computation, 6(2), 105-131.
@@ -84,8 +115,20 @@ Fortier N., Sheppard J., Pillai K. G. (2013, April). Bayesian abductive inferenc
 \bibitem[Gelsema, 1995]{gelsema1995}
 Gelsema E. S. (1995). Abductive reasoning in Bayesian belief networks using a genetic algorithm. Pattern Recognition Letters, 16(8), 865-871.
 
+\bibitem[Nilsson, 1998]{nilsson1998}
+Nilsson D. (1998). An efficient algorithm for finding the M most probable configurationsin probabilistic expert systems. Statistics and computing, 8(2), 159-173.
+
+\bibitem[Rojas and Kramer, 1993]{rojas1993}
+Rojas-Guzman C., Kramer M. A. (1993, July). Galgo: A genetic algorithm decision support tool for complex uncertain systems modeled with Bayesian belief networks. In Proceedings of the Ninth international conference on Uncertainty in artificial intelligence (pp. 368-375). Morgan Kaufmann Publishers Inc..
+
+\bibitem[Seroussi and Golmard, 1994]{seroussi1994}
+Seroussi B., Golmard J. L. (1994). An algorithm directly finding the K most probable configurations in Bayesian networks. International Journal of Approximate Reasoning, 11(3), 205-233.
+
 \bibitem[Shimony, 1994]{shimony1994}
 Shimony S. (1994). Finding maps for belief networks is NP-hard. Artificial Intelligence 68, 399-410.
+
+\bibitem[Welch, 1996]{welch1996}
+Welch R. L. (1996, August). Real time estimation of Bayesian networks. In Proceedings of the Twelfth international conference on Uncertainty in artificial intelligence (pp. 533-544). Morgan Kaufmann Publishers Inc..
 
 \end{thebibliography}
 
