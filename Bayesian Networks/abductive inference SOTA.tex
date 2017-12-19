@@ -55,22 +55,16 @@ In this state of the art, we will review some methods to perform total and parti
 
 \section{State-of-the-art}
 
-We can formally describe the problem of the k-MPE as: given a set of unobserved variables $p(X_u)$, a set of observed variables $p(X_o)$, we want to find the configuration $p(x^*_u)$ such that:
+We can formally describe the problem of the k-MPE as: given a set of unobserved variables $X_u$, a set of observed variables $X_o$, we want to find the configuration $x^*_u$ such that:
 
 \begin{equation}
 x^*_u = arg\max_{x_u} P(x_u | x_o)
 \label{eqn:MPE}
 \end{equation}
 
-Which means we are aiming to maximize the MAP state of the network by finding an appropiate $p(x^*_u)$ (\cite{deCampos2002}).
+Which means we are aiming to maximize the MAP state of the network by finding an appropiate $x^*_u$ (\cite{deCampos2002}).
 
-Traditionally, there has been three solutions to this problem (\cite{deCampos2001}):
-
-\begin{itemize}
-\item Through the computation of the \textit{chain rule}, which is intractable in even the simplest of networks .
-\item Through belief propagation.
-\item Through abductive inference.
-\end{itemize}
+Traditionally, there has been three solutions to this problem (\cite{deCampos2001}): Through the computation of the \textit{chain rule}, which is intractable in even the simplest of networks, through belief propagation and through abductive inference.
 
 
 \subsection{Total abductive inference}
@@ -79,20 +73,37 @@ It has been proven that belief propagation and abductive inference are both equa
 There are two ways of tackling this problem:
 
 \begin{itemize}
-\item With exact computation. This is the case of \cite{dawid1992}, were a belief propagation algorithm was adapted to find the MPE of a network by raplacing the summation by maximum in the message passing. This method was able to only find the first 3 MPEs of the network (\cite{nilsson1998}), so it had to be modified to be able to find the k-MPE.
+\item With exact computation. This is the case of \cite{dawid1992}, were a belief propagation algorithm was adapted to find the MPE of a network by replacing the summation by maximum in the message passing. This method was able to only find the first 3 MPEs of the network (\cite{nilsson1998}), so it had to be modified to be able to find the k-MPE.
 
-\item With approximate results. Here, we treat the problem as an optimization one. One approach was performed by \cite{gelsema1995} using a genetic algorithm (GA). In this method, each individual of the population represents a possible state of the network by representing the presence or absence of the nodes with a binary vector. Genetic programming is also used by \cite{rojas1993} to solve this problem. Here, they represent the network's graph in each individual. Another method was proposed by \cite{welch1996}, where he used a Montecarlo simulation to initialize the population and then used a GA similar to that of Gelsema.
+\item With approximate results. Here, we treat the problem as an optimization one. One approach was performed by \cite{gelsema1995} using a genetic algorithm (GA). In this method, each individual of the population represents a possible state of the network by representing the presence or absence of the nodes with a binary vector. Genetic programming is also used by \cite{rojas1993} to solve this problem. Here, they represent the network's graph in each individual. Another method was proposed by \cite{welch1996}, where he used a Montecarlo simulation to initialize the population and then used a GA similar to that of Gelsema. The most recent approach to this problem is with the use of overlapping swarm intelligence (\cite{fortier2013}), in wich each swarm tries to find a MPE of the network.
 \end{itemize}
 
 \subsection{Partial abductive inference}
 
+In partial abductive inference, instead of having a set of unobserved variables $X_u$, we have an explanation set $X_E$ of the variables we are interested in and a set $X_R$ such as $X_R = X_u \textbackslash X_E$. With this, the the configuration $x^*_E$ we want to find is:
 
+\begin{equation}
+x^*_E = arg\max_{x_E} P(x_E | x_o) = arg\max_{x_E} \sum_{x_R}P(x_E,x_R|x_o)
+\label{eqn:pMPE}
+\end{equation}
+
+This process is more complex than total abductive inference (\cite{deCampos2002}). They both are similar, but not all the clique trees obtained from the BN are valid, so the tree generation has to be modified from what we have in total abductive inference.
+
+To solve this problem, there are the same approaches as in the total one:
+
+\begin{itemize}
+
+\item Trying to get the exact MPE. Here, there are methods that rely on variable elimination, like \cite{dechter1998} which uses his bucket elimination method to find the MPE and then we can use \cite{li1993} linear algorithm k-1 times to find the k-MPE. A variation of \cite{nilsson1998} regarding the formation of the trees can be used to solve partial abduction. 
+
+\item Aproximating the best k-MPE. The main researcher in this area was performed De Campos \textit{et al.}, who started his research adapting a genetic algorithm to solve this problem as in the method followed by Gelsema (\cite{deCampos1999}). In this case, the chain rule cannot be used to evaluate the fitness of each individual, so it uses probability propagation. He also focused on improving the efficiency of this GA's operators (\cite{deCampos2002}). Another alternative proposed was the use of simulated annealing (\cite{deCampos2001}) to move through the solution space
+
+\end{itemize}
 
 \section{Conclusions and future research}
 
-What are the main open lines for research.
+Abductive inference in Bayesian networks is a useful in many real case scenarios, such as diagnosis. Total abductive inference has been very studied by the literature and has a wide range of both exact and approximate methods to get the k-MPE of a network. Partial abductive inference is not as widely studied, but it seems like its main idea could be more useful than the total one. In both cases, the most recent advances are in the approximate branch, which is more feasible for bigger Bayesian networks.
 
-
+The main open lines of research in this problem seem to be the development of more refined genetic algorithms for both total and partial, or the application of different methods of moving through the solution space of the maximization problem, as in the case of simulated annealing and overlapping swarm intelligence.
 
 \bibliographystyle{plainnat}
 \begin{thebibliography}{}
@@ -109,11 +120,17 @@ De Campos L. M., Gámez J. A., Moral S. (2001). Partial abductive inference in B
 \bibitem[De Campos \textit{et al.}, 2002]{deCampos2002}
 De Campos L. M., Gamez J. A., Moral S. (2002). Partial abductive inference in Bayesian belief networks-an evolutionary computation approach by using problem-specific genetic operators. IEEE Transactions on Evolutionary Computation, 6(2), 105-131.
 
+\bibitem[Dechter, 1998]{dechter1998}
+Dechter R. (1998). Bucket elimination: A unifying framework for probabilistic inference. In Learning in graphical models (pp. 75-104). Springer, Dordrecht.
+
 \bibitem[Fortier \textit{et al.}, 2013]{fortier2013}
 Fortier N., Sheppard J., Pillai K. G. (2013, April). Bayesian abductive inference using overlapping swarm intelligence. In Swarm Intelligence (SIS), 2013 IEEE Symposium on (pp. 263-270). IEEE.
 
 \bibitem[Gelsema, 1995]{gelsema1995}
 Gelsema E. S. (1995). Abductive reasoning in Bayesian belief networks using a genetic algorithm. Pattern Recognition Letters, 16(8), 865-871.
+
+\bibitem[Li and D'Ambrosio, 1993]{li1993}
+Li Z., D'Ambrosio B. (1993, July). An efficient approach for finding the MPE in belief networks. In Proceedings of the Ninth international conference on Uncertainty in artificial intelligence (pp. 342-349). Morgan Kaufmann Publishers Inc..
 
 \bibitem[Nilsson, 1998]{nilsson1998}
 Nilsson D. (1998). An efficient algorithm for finding the M most probable configurationsin probabilistic expert systems. Statistics and computing, 8(2), 159-173.
