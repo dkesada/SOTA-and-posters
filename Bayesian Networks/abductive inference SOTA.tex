@@ -20,7 +20,7 @@
 
 \begin{document}
 
-\title{Abductive inference in bayesian networks}
+\title{Abductive inference in Bayesian networks}
 
 \author{{David Quesada López}\\
 {\small Computational Intelligence Group, Departamento de Inteligencia Artificial, Universidad Polit\'ecnica de Madrid, Spain}}
@@ -32,7 +32,7 @@
 
 %\address{}
 
-\begin{abstract} Abductive inference in bayesian networks solves the problem of obtaining the most probable explanation (MPE) of a network given some evidence of its nodes. This inference can be total, if you aim to obtain the MPE of the whole network, or partial, if you are only interested in some of the nodes. In this state of the art we will cover both approaches and the methods used to solve them.
+\begin{abstract} Abductive inference in Bayesian networks solves the problem of obtaining the most probable explanation (MPE) of a network given some evidence of its nodes. This inference can be total, if you aim to obtain the MPE of the whole network, or partial, if you are only interested in some of the nodes. In this state of the art we will cover both approaches and the methods used to solve them.
 \end{abstract}
 
 
@@ -44,9 +44,7 @@ KEY WORDS: Bayesian networks; Abductive inference; Approximate inference
 
 A Bayesian network is a directed acyclic graph (DAG) where you represent each node as a random variable and the edges represent the dependence or independence among them. Each node also has associated a conditional probability distribution conditioned to its parents that represents the probability distribution of the node's variable.
 
-One of the problems associated with BNs is abductive inference, which consists in finding the maximum \textit{a posteriori} probability (MAP) state of the network given some evidence on the state of variables of the network. In general, we are interested in the \textit{K} most probable explanations (k-MPE). This problem is known to be NP-hard (\cite{shimony1994}), and most of the times trying to obtain an exact MPE turns out to be intractable. This is the reason why most researchers focus on getting \textit{K} approximate MPEs instead of the exact one. 
-
-% formula MPE?
+One of the problems associated with BNs is abductive inference, which consists in finding the maximum \textit{a posteriori} probability (MAP) state of the network given some evidence on the state of variables of the network. In general, we are interested in the \textit{K} most probable explanations (k-MPE), which is more complex (\cite{seroussi1994}). This problem is known to be NP-hard (\cite{shimony1994}), and most of the times trying to obtain an exact MPE turns out to be intractable. This is the reason why many researchers focus on getting \textit{K} approximate MPEs instead of the exact one.
 
 Abductive inference can also be called total, when we want to know the whole network's k-MPEs, or partial, when we only want the \textit{K} most probable state assignments for a subset of the variables known as the explanation set 
 (\cite{fortier2013}).
@@ -73,9 +71,9 @@ It has been proven that belief propagation and abductive inference are both equa
 There are two ways of tackling this problem:
 
 \begin{itemize}
-\item With exact computation. This is the case of \cite{dawid1992}, were a belief propagation algorithm was adapted to find the MPE of a network by replacing the summation by maximum in the message passing. This method was able to only find the first 3 MPEs of the network (\cite{nilsson1998}), so it had to be modified to be able to find the k-MPE.
+\item With exact computation. This is the case of \cite{dawid1992}, where a belief propagation algorithm was adapted to find the MPE of a network by replacing the summation by maximum in the message passing. This method was able to only find the first 3 MPEs of the network (\cite{nilsson1998}), so it had to be modified to be able to find the k-MPE. This involved using Dawid's algorithm and a divide and conquer algorithm that was used to find the remaining k-1 MPEs using the junction tree and the MPE from the first algorithm.
 
-\item With approximate results. Here, we treat the problem as an optimization one. One approach was performed by \cite{gelsema1995} using a genetic algorithm (GA). In this method, each individual of the population represents a possible state of the network by representing the presence or absence of the nodes with a binary vector. Genetic programming is also used by \cite{rojas1993} to solve this problem. Here, they represent the network's graph in each individual. Another method was proposed by \cite{welch1996}, where he used a Montecarlo simulation to initialize the population and then used a GA similar to that of Gelsema. The most recent approach to this problem is with the use of overlapping swarm intelligence (\cite{fortier2013}), in wich each swarm tries to find a MPE of the network.
+\item With approximate results. Here, we treat the problem as an optimization one. One approach was performed by \cite{gelsema1995} using a genetic algorithm (GA). In this method, each individual of the population represents a possible state of the network by representing the presence or absence of the nodes with a binary vector. Genetic programming is also used by \cite{rojas1993} to solve this problem. Here, they represent the network's graph in each individual. Another method was proposed by \cite{welch1996}, where he used a Montecarlo simulation to initialize the population and then used a GA similar to that of Gelsema. The most recent approach to this problem is with the use of overlapping swarm intelligence (\cite{fortier2013}), in which each swarm is assigned to a node of the network. Then, each swarm tries to find the state of its node for his markov blanket. Afterwards, the swarms that have the same node assigned compete with each other and to end the iteration the whole fitness of the network is calculated.
 \end{itemize}
 
 \subsection{Partial abductive inference}
@@ -93,17 +91,17 @@ To solve this problem, there are the same approaches as in the total one:
 
 \begin{itemize}
 
-\item Trying to get the exact MPE. Here, there are methods that rely on variable elimination, like \cite{dechter1998} which uses his bucket elimination method to find the MPE and then we can use \cite{li1993} linear algorithm k-1 times to find the k-MPE. A variation of \cite{nilsson1998} regarding the formation of the trees can be used to solve partial abduction. 
+\item Trying to get the exact MPE. Here, the objective is trying to create an appropiate junction tree in which you can perform the methods of total abduction. The problem is that creating this modified junction trees is not trivial due to the non commutative behaviour of summation and maximum. There are methods that rely on variable elimination, like \cite{dechter1998} which uses his bucket elimination method to find the MPE and then we can use \cite{li1993} linear algorithm k-1 times to find the k-MPE. A variation of \cite{nilsson1998} regarding the formation of the trees can be used to solve partial abduction. 
 
-\item Aproximating the best k-MPE. The main researcher in this area was performed De Campos \textit{et al.}, who started his research adapting a genetic algorithm to solve this problem as in the method followed by Gelsema (\cite{deCampos1999}). In this case, the chain rule cannot be used to evaluate the fitness of each individual, so it uses probability propagation. He also focused on improving the efficiency of this GA's operators (\cite{deCampos2002}). Another alternative proposed was the use of simulated annealing (\cite{deCampos2001}) to move through the solution space
+\item Aproximating the best k-MPE. The main researcher in this area was performed De Campos \textit{et al.}, who started his research adapting a genetic algorithm to solve this problem as in the method followed by Gelsema (\cite{deCampos1999}). In this case, the chain rule cannot be used to evaluate the fitness of each individual, so it uses probability propagation. He also focused on improving the efficiency of this GA's operators by reusing part of the message propagation used in calculating the fitness of the parents when calculating the fitness of their offspring (\cite{deCampos2002}). Another alternative proposed was the use of simulated annealing (\cite{deCampos2001}) to move through the solution space. In this case, the cost function consists of the probability propagation that was used in the fitness function of the GA.
 
 \end{itemize}
 
 \section{Conclusions and future research}
 
-Abductive inference in Bayesian networks is a useful in many real case scenarios, such as diagnosis. Total abductive inference has been very studied by the literature and has a wide range of both exact and approximate methods to get the k-MPE of a network. Partial abductive inference is not as widely studied, but it seems like its main idea could be more useful than the total one. In both cases, the most recent advances are in the approximate branch, which is more feasible for bigger Bayesian networks.
+Abductive inference in Bayesian networks is useful in many real case scenarios. Total abductive inference has been very studied by the literature and has a wide range of both exact and approximate methods to get the k-MPE of a network. Partial abductive inference is not as widely studied, but it seems like its main idea could be more useful than the total one. In both cases, the most recent advances are in the approximate branch, which is more feasible for bigger Bayesian networks.
 
-The main open lines of research in this problem seem to be the development of more refined genetic algorithms for both total and partial, or the application of different methods of moving through the solution space of the maximization problem, as in the case of simulated annealing and overlapping swarm intelligence.
+The main open lines of research in this problem seem to be the development of more refined genetic algorithms for both total and partial, or the application of different methods for moving through the solution space of the maximization problem, as in the case of simulated annealing and overlapping swarm intelligence.
 
 \bibliographystyle{plainnat}
 \begin{thebibliography}{}
@@ -133,7 +131,7 @@ Gelsema E. S. (1995). Abductive reasoning in Bayesian belief networks using a ge
 Li Z., D'Ambrosio B. (1993, July). An efficient approach for finding the MPE in belief networks. In Proceedings of the Ninth international conference on Uncertainty in artificial intelligence (pp. 342-349). Morgan Kaufmann Publishers Inc..
 
 \bibitem[Nilsson, 1998]{nilsson1998}
-Nilsson D. (1998). An efficient algorithm for finding the M most probable configurationsin probabilistic expert systems. Statistics and computing, 8(2), 159-173.
+Nilsson D. (1998). An efficient algorithm for finding the M most probable configurations in probabilistic expert systems. Statistics and computing, 8(2), 159-173.
 
 \bibitem[Rojas and Kramer, 1993]{rojas1993}
 Rojas-Guzman C., Kramer M. A. (1993, July). Galgo: A genetic algorithm decision support tool for complex uncertain systems modeled with Bayesian belief networks. In Proceedings of the Ninth international conference on Uncertainty in artificial intelligence (pp. 368-375). Morgan Kaufmann Publishers Inc..
